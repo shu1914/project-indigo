@@ -24,7 +24,7 @@ Lay the project foundation
 
 #### Project Structure
 - [ ] Create project skeleton
-- [ ] Create application module
+- [x] Create application module
 - [ ] Create modules directory
 - [ ] Create docs directory
 
@@ -32,7 +32,7 @@ Lay the project foundation
 - [ ] Create `Application`
 - [ ] Create `ApplicationFactory`
 - [ ] Implement application lifecycle
-- [ ] Display "Hello Project Indigo"
+- [x] Display "Hello Project Indigo"
 
 ---
 

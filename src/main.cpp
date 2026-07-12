@@ -1,12 +1,20 @@
-#include <iostream>
+/**
+ * @file main.cpp
+ * @brief Main entry point of the app.
+ * @author As-Harrie Dianalan (asharrie.dianalan@gmail.com)
+ * @date 2026-07-12
+ * 
+ * @copyright Copyright (c) 2026
+ */
 
-using namespace std;
+#include "Application.h"
 
-int main (
+int
+main(
     int argc,
     char** argv)
 {
-    cout << "Hello Indigo League!" << endl;
+    indigo::Application app;
 
-    return 0;
+    return app.run();
 }
