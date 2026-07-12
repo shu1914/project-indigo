@@ -30,8 +30,7 @@ Lay the project foundation
 
 #### Application
 - [x] Create `Application`
-- [ ] Implement application lifecycle
-- [ ] Wire dependencies in `main()`
+- [x] Implement `Application::run()`
 - [x] Display "Hello Project Indigo"
 
 ---
