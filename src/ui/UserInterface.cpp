@@ -14,10 +14,20 @@
 namespace indigo
 {
 
+UserInterface::UserInterface(
+    IPokedex& pokedex)
+    : _pokedex(pokedex)
+{
+}
+
 bool
 UserInterface::initialize()
 {
     std::cout << "Initializing `UserInterface` module." << std::endl;
+
+    _pokedex.initialize();
+
+    std::cout << "Pokemon #1 is " << _pokedex.getPokemonName(1) << std::endl;
 
     return true;
 }

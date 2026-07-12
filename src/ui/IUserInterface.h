@@ -12,6 +12,8 @@
 #ifndef I_USER_INTERFACE_H
 #define I_USER_INTERFACE_H
 
+#include "pokedex/IPokedex.h"
+
 namespace indigo
 {
 
@@ -19,8 +21,6 @@ class IUserInterface
 {
 
 public:
-
-    IUserInterface() {}
 
     virtual ~IUserInterface() {}
 

@@ -9,6 +9,7 @@
 
 #include "platform/Platform.h"
 #include "ui/UserInterface.h"
+#include "pokedex/Pokedex.h"
 #include "application/Application.h"
 
 int
@@ -19,7 +20,10 @@ main(
 
     indigo::Platform platform;
 
-    indigo::UserInterface ui;
+    indigo::Pokedex pokedex;
+
+    indigo::UserInterface ui(
+        pokedex);
 
     indigo::Application app(
         platform,

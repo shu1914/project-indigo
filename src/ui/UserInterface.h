@@ -22,9 +22,14 @@ class UserInterface : public IUserInterface
 
 public:
 
+    explicit UserInterface(
+            IPokedex& pokedex);
+
     bool initialize() override;
 
     void shutdown() override;
+
+    IPokedex& _pokedex;
 
 }; // end class UserInterface
 

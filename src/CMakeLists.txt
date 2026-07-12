@@ -1,6 +1,7 @@
 add_subdirectory(application)
 add_subdirectory(platform)
 add_subdirectory(ui)
+add_subdirectory(pokedex)
 
 add_executable(project_indigo
     main.cpp
@@ -18,4 +19,5 @@ target_link_libraries(project_indigo PRIVATE
     application
     platform
     ui
+    pokedex
 )
