@@ -29,7 +29,7 @@ Shared utilities used across modules.
 main()
     ↓
 Application
-    ↓
-UI
-    ↓
-Pokemon
+   ├── Platform
+   └── UI
+          ↓
+      Pokemon
