@@ -17,6 +17,11 @@ namespace indigo
     {
 
     public:
+        /**
+         * @brief Runs the application lifecycle.
+         * 
+         * @return int Exit status code.
+         */
         int run();
 
     }; // end namespace indigo
