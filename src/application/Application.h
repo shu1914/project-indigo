@@ -24,7 +24,7 @@ namespace indigo
          */
         int run();
 
-    }; // end namespace indigo
+    }; // end class Application
 
 } // end namespace indigo
 
