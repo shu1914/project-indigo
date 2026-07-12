@@ -15,8 +15,10 @@ namespace indigo
 {
 
 Application::Application(
-    IPlatform& platform)
+    IPlatform& platform,
+    IUserInterface& ui)
     : _platform(platform)
+    , _ui(ui)
 {
 }
 
@@ -26,6 +28,7 @@ Application::run()
     std::cout << "Hello Project Indigo." << std::endl;
 
     _platform.initialize();
+    _ui.initialize();
 
     std::cout << "Application initialized." << std::endl;
 

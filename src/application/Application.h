@@ -13,6 +13,7 @@
 #include <memory>
 
 #include "platform/IPlatform.h"
+#include "ui/IUserInterface.h"
 
 namespace indigo
 {
@@ -23,7 +24,8 @@ class Application
 public:
 
     Application(
-        IPlatform& platform);
+        IPlatform& platform,
+        IUserInterface& ui);
 
     /**
      * @brief Runs the application lifecycle.
@@ -35,6 +37,7 @@ public:
 private:
 
     IPlatform& _platform;
+    IUserInterface& _ui;
 
 }; // end class Application
 

@@ -8,6 +8,7 @@
  */
 
 #include "platform/Platform.h"
+#include "ui/UserInterface.h"
 #include "application/Application.h"
 
 int
@@ -17,7 +18,12 @@ main(
 {
 
     indigo::Platform platform;
-    indigo::Application app(platform);
+
+    indigo::UserInterface ui;
+
+    indigo::Application app(
+        platform,
+        ui);
 
     return app.run();
 }
