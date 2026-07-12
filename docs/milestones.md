@@ -18,7 +18,7 @@ Lay the project foundation
 - [x] Configure .gitignore
 
 #### Build System
-- [ ] Configure CMake
+- [x] Configure CMake
 - [ ] Debug build
 - [ ] Release build
 
