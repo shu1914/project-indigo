@@ -7,9 +7,8 @@
  * @copyright Copyright (c) 2026
  */
 
-#include <iostream>
-
 #include "Pokedex.h"
+#include "common/logger/LogMacro.h"
 
 namespace indigo
 {
@@ -17,7 +16,7 @@ namespace indigo
 bool
 Pokedex::initialize()
 {
-    std::cout << "Initializing `Pokedex` module." << std::endl;
+    TRACE("Initializing `Pokedex` module." );
 
     return true;
 }

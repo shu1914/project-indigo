@@ -7,9 +7,8 @@
  * @copyright Copyright (c) 2026
  */
 
-#include <iostream>
-
 #include "Application.h"
+#include "common/logger/LogMacro.h"
 
 namespace indigo
 {
@@ -25,12 +24,12 @@ Application::Application(
 int
 Application::run()
 {
-    std::cout << "Hello Project Indigo." << std::endl;
+    DEBUG("Hello Project Indigo.");
 
     _platform.initialize();
     _ui.initialize();
 
-    std::cout << "Application initialized." << std::endl;
+    TRACE("Application initialized.");
 
     return 0;
 }
@@ -38,12 +37,12 @@ Application::run()
 void
 Application::shutdown()
 {
-    std::cout << "Goodbye Project Indigo." << std::endl;
+    DEBUG("Goodbye Project Indigo.");
 
     _platform.shutdown();
     _ui.shutdown();
 
-    std::cout << "Application shutdown." << std::endl;
+    TRACE("Application shutdown");
 }
 
 } // end namespace indigo

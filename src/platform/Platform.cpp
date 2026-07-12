@@ -7,9 +7,8 @@
  * @copyright Copyright (c) 2026
  */
 
-#include <iostream>
-
 #include "Platform.h"
+#include "common/logger/LogMacro.h"
 
 namespace indigo
 {
@@ -17,7 +16,7 @@ namespace indigo
 bool
 Platform::initialize()
 {
-    std::cout << "Initializing `Platform` module." << std::endl;
+    TRACE("Initializing `Platform` module.");
 
     return true;
 }
@@ -25,7 +24,7 @@ Platform::initialize()
 void
 Platform::shutdown()
 {
-    std::cout << "Shutting `Platform` module down." << std::endl;
+    TRACE("Shutting `Platform` module down.");
 }
 
 } // end namespace indigo

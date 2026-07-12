@@ -7,9 +7,8 @@
  * @copyright Copyright (c) 2026
  */
 
-#include <iostream>
-
 #include "UserInterface.h"
+#include "common/logger/LogMacro.h"
 
 namespace indigo
 {
@@ -23,11 +22,11 @@ UserInterface::UserInterface(
 bool
 UserInterface::initialize()
 {
-    std::cout << "Initializing `UserInterface` module." << std::endl;
+    TRACE("Initializing `UserInterface` module." );
 
     _pokedex.initialize();
 
-    std::cout << "Pokemon #1 is " << _pokedex.getPokemonName(1) << std::endl;
+    DEBUG("Pokemon #1 is {}", _pokedex.getPokemonName(1));
 
     return true;
 }
@@ -35,7 +34,7 @@ UserInterface::initialize()
 void
 UserInterface::shutdown()
 {
-    std::cout << "Shutting `UserInterface` module down." << std::endl;
+    TRACE("Shutting `UserInterface` module down.");
 }
 
 } // end namespace indigo
