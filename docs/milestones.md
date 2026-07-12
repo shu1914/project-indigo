@@ -23,15 +23,15 @@ Lay the project foundation
 - [x] Release build
 
 #### Project Structure
-- [ ] Create project skeleton
+- [x] Create project skeleton
 - [x] Create application module
 - [ ] Create modules directory
-- [ ] Create docs directory
+- [x] Create docs directory
 
 #### Application
-- [ ] Create `Application`
-- [ ] Create `ApplicationFactory`
+- [x] Create `Application`
 - [ ] Implement application lifecycle
+- [ ] Wire dependencies in `main()`
 - [x] Display "Hello Project Indigo"
 
 ---
@@ -39,21 +39,25 @@ Lay the project foundation
 # Milestone 1 - Pewter City
 
 ## Objective
-Build the application architecture.
+Establish the core architecture.
 
 ### Checklist
 
-#### Modules
-- [ ] Design module structure
-- [ ] Create module interfaces
-- [ ] Create facades
-- [ ] Create factories
-- [ ] Create lifecycle classes
+#### Architecture
+- [ ] Design module boundaries
+- [ ] Create initial modules
+- [ ] Configure module CMake files
+- [ ] Define dependency flow
+
+#### Dependency Injection
+- [ ] Construct modules in `main()`
+- [ ] Inject dependencies through constructors
+- [ ] Eliminate unnecessary global state
 
 #### Application
-- [ ] Register modules
-- [ ] Initialize modules
-- [ ] Shutdown modules
+- [ ] Establish the application composition root
+- [ ] Verify application startup
+- [ ] Verify application shutdown
 
 #### Utilities
 - [ ] Logging
