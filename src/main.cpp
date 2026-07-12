@@ -25,5 +25,9 @@ main(
         platform,
         ui);
 
-    return app.run();
+    app.run();
+
+    app.shutdown();
+
+    return 0;
 }

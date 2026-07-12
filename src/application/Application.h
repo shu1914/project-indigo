@@ -34,6 +34,12 @@ public:
      */
     int run();
 
+    /**
+     * @brief Exits the application
+     * 
+     */
+    void shutdown();
+
 private:
 
     IPlatform& _platform;

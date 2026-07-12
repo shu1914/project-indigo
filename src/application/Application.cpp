@@ -35,4 +35,15 @@ Application::run()
     return 0;
 }
 
+void
+Application::shutdown()
+{
+    std::cout << "Goodbye Project Indigo." << std::endl;
+
+    _platform.shutdown();
+    _ui.shutdown();
+
+    std::cout << "Application shutdown." << std::endl;
+}
+
 } // end namespace indigo
