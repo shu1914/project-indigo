@@ -1,7 +1,10 @@
+find_package(fmt REQUIRED)
+
 add_subdirectory(application)
 add_subdirectory(platform)
 add_subdirectory(ui)
 add_subdirectory(pokedex)
+add_subdirectory(common)
 
 add_executable(project_indigo
     main.cpp
@@ -20,4 +23,5 @@ target_link_libraries(project_indigo PRIVATE
     platform
     ui
     pokedex
+    logger
 )

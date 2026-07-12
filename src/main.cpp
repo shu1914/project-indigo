@@ -7,6 +7,8 @@
  * @copyright Copyright (c) 2026
  */
 
+#include "common/logger/ConsoleLogger.h"
+#include "common/logger/Log.h"
 #include "platform/Platform.h"
 #include "ui/UserInterface.h"
 #include "pokedex/Pokedex.h"
@@ -17,6 +19,10 @@ main(
     int argc,
     char** argv)
 {
+
+    indigo::ConsoleLogger console;
+
+    indigo::Log::initialize(console);
 
     indigo::Platform platform;
 
