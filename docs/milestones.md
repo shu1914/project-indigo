@@ -14,7 +14,7 @@ Lay the project foundation
 #### Repository
 - [x] Create GitHub repository
 - [x] Write README
-- [ ] Add LICENSE
+- [x] Add LICENSE
 - [x] Configure .gitignore
 
 #### Build System
