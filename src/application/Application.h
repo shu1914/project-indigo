@@ -13,18 +13,18 @@
 namespace indigo
 {
 
-    class Application
-    {
+class Application
+{
 
-    public:
-        /**
-         * @brief Runs the application lifecycle.
-         * 
-         * @return int Exit status code.
-         */
-        int run();
+public:
+    /**
+     * @brief Runs the application lifecycle.
+     * 
+     * @return int Exit status code.
+     */
+    int run();
 
-    }; // end class Application
+}; // end class Application
 
 } // end namespace indigo
 
