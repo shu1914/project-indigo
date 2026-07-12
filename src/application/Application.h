@@ -10,6 +10,10 @@
 #ifndef APPLICATION_H
 #define APPLICATION_H
 
+#include <memory>
+
+#include "platform/IPlatform.h"
+
 namespace indigo
 {
 
@@ -17,12 +21,20 @@ class Application
 {
 
 public:
+
+    Application(
+        IPlatform& platform);
+
     /**
      * @brief Runs the application lifecycle.
      * 
      * @return int Exit status code.
      */
     int run();
+
+private:
+
+    IPlatform& _platform;
 
 }; // end class Application
 

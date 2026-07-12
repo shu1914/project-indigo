@@ -7,14 +7,17 @@
  * @copyright Copyright (c) 2026
  */
 
-#include "Application.h"
+#include "platform/Platform.h"
+#include "application/Application.h"
 
 int
 main(
     int argc,
     char** argv)
 {
-    indigo::Application app;
+
+    indigo::Platform platform;
+    indigo::Application app(platform);
 
     return app.run();
 }
