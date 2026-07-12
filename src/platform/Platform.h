@@ -30,6 +30,6 @@ public:
 
 }; // end class Platform
 
-} // end namespace indig
+} // end namespace indigo
 
 #endif // end PLATFORM_H
