@@ -19,8 +19,8 @@ Lay the project foundation
 
 #### Build System
 - [x] Configure CMake
-- [ ] Debug build
-- [ ] Release build
+- [x] Debug build
+- [x] Release build
 
 #### Project Structure
 - [ ] Create project skeleton
