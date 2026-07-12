@@ -22,8 +22,6 @@ class IUserInterface
 
 public:
 
-    virtual ~IUserInterface() {}
-
     virtual bool initialize() = 0;
 
     virtual void shutdown() = 0;

@@ -23,8 +23,6 @@ class IPlatform
 
 public:
 
-    IPlatform() {}
-
     virtual ~IPlatform() {}
 
     virtual bool initialize() = 0;

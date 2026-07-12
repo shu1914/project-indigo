@@ -20,8 +20,6 @@ class IPokedex
 
 public:
 
-    IPokedex() {}
-
     virtual ~IPokedex() {}
 
     virtual bool initialize() = 0;
