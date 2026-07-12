@@ -25,7 +25,7 @@ Lay the project foundation
 #### Project Structure
 - [x] Create project skeleton
 - [x] Create application module
-- [ ] Create modules directory
+- [x] Create modules directory
 - [x] Create docs directory
 
 #### Application
