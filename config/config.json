@@ -1,0 +1,12 @@
+{
+    "api": {
+        "baseUrl": "https://pokeapi.co/api/v2",
+        "timeoutMs": 5000
+    },
+    "logging": {
+        "level": "trace"
+    },
+    "ui": {
+        "theme": "dark"
+    }
+}

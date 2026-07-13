@@ -24,4 +24,5 @@ target_link_libraries(project_indigo PRIVATE
     ui
     pokedex
     logger
+    config
 )
