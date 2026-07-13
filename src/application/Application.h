@@ -15,6 +15,7 @@
 #include "platform/IPlatform.h"
 #include "ui/IUserInterface.h"
 #include "common/config/IConfiguration.h"
+#include "common/error/Result.h"
 
 namespace indigo
 {

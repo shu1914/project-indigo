@@ -23,23 +23,35 @@ Configuration::Configuration(
 {
 }
 
-void
+Result
 Configuration::load()
 {
     std::ifstream file(_path);
 
     if (!file.is_open())
     {
-        throw std::runtime_error(
+        return Result::fail(
+            Error::ConfigFileNotFound,
             "Failed to open configuration file: " + _path);
     }
 
-    json root;
-    file >> root;
+    try
+    {
+        json root;
+        file >> root;
 
-    _values.clear();
+        _values.clear();
 
-    flatten(root, "");
+        flatten(root, "");
+
+        return Result::ok();
+    }
+    catch (const json::exception& e)
+    {
+        return Result::fail(
+            Error::ConfigParseFailed,
+            e.what());
+    }
 }
 
 std::string

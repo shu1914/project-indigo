@@ -12,6 +12,8 @@
 
 #include <string>
 
+#include "common/error/Result.h"
+
 namespace indigo
 {
 
@@ -32,7 +34,7 @@ public:
      *
      * @throw std::runtime_error if loading fails.
      */
-    virtual void load() = 0;
+    virtual Result load() = 0;
 
     virtual std::string getString(
         const std::string& key) const = 0;

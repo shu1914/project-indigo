@@ -9,6 +9,7 @@
 
 #include "Application.h"
 #include "common/logger/LogMacro.h"
+#include "common/error/Result.h"
 
 namespace indigo
 {
@@ -28,7 +29,14 @@ Application::run()
 {
     DEBUG("Hello Project Indigo.");
 
-    _config.load();
+    Result result = _config.load();
+
+    if (!result.success())
+    {
+        ERROR(result.message);
+        return static_cast<int>(result.error);
+    }
+
     _platform.initialize();
     _ui.initialize();
 

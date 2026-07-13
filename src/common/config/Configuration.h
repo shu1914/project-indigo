@@ -26,7 +26,7 @@ public:
     explicit Configuration(
         std::string path);
 
-    void load() override;
+    Result load() override;
 
     std::string getString(
         const std::string& key) const override;
