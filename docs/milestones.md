@@ -60,8 +60,8 @@ Establish the core architecture.
 
 #### Utilities
 - [x] Logging
-- [ ] Configuration
-- [ ] Basic error handling
+- [x] Configuration
+- [x] Basic error handling
 
 ---
 
@@ -253,8 +253,8 @@ Release Version 1.0.
 
 # Journey Progress
 
-- [ ] 🌱 Pallet Town
-- [ ] 🪨 Pewter City
+- [x] 🌱 Pallet Town
+- [x] 🪨 Pewter City
 - [ ] 💧 Cerulean City
 - [ ] ⚡ Vermilion City
 - [ ] 🌈 Celadon City
