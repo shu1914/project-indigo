@@ -73,8 +73,8 @@ Build the Pokémon domain.
 ### Checklist
 
 #### Domain
-- [ ] Create Pokémon model
-- [ ] Create Type model
+- [x] Create Pokémon model
+- [x] Create Type model
 - [ ] Create Ability model
 - [ ] Create Evolution model
 
