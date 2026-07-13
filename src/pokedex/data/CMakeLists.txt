@@ -1,5 +1,6 @@
 add_library(data
     Types.cpp
+    Abilities.cpp
 )
 
 target_include_directories(data PUBLIC

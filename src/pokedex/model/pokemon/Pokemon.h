@@ -13,6 +13,7 @@
 #include <vector>
 
 #include "../type/Type.h"
+#include "../ability/Ability.h"
 
 namespace indigo
 {
@@ -28,14 +29,17 @@ public:
     const std::string& name() const;
 
     void addType(const Type& type);
+    void addAbility(const Ability& type);
 
     const std::vector<Type>& types() const;
+    const std::vector<Ability>& abilities() const;
 
 private:
     uint32_t _id;
     std::string _name;
 
     std::vector<Type> _types;
+    std::vector<Ability> _abilities;
 
 }; // end class Pokemon
 

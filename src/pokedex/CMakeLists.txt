@@ -15,4 +15,5 @@ target_link_libraries(pokedex PUBLIC
     ## models
     pokemon
     type
+    ability
 )

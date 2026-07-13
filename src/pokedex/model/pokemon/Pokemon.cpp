@@ -39,10 +39,23 @@ Pokemon::addType(
     _types.push_back(type);
 }
 
+void
+Pokemon::addAbility(
+    const Ability& type)
+{
+    _abilities.push_back(type);
+}
+
 const std::vector<Type>&
 Pokemon::types() const
 {
     return _types;
+}
+
+const std::vector<Ability>&
+Pokemon::abilities() const
+{
+    return _abilities;
 }
 
 } // end namespace indigo
