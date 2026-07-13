@@ -7,6 +7,7 @@
  * @copyright Copyright (c) 2026
  */
 
+#include "common/config/Configuration.h"
 #include "common/logger/ConsoleLogger.h"
 #include "common/logger/Log.h"
 #include "platform/Platform.h"
@@ -20,6 +21,9 @@ main(
     char** argv)
 {
 
+    indigo::Configuration config("config/config.json");
+    config.load();
+
     indigo::ConsoleLogger console;
 
     indigo::Log::initialize(console);
@@ -32,6 +36,7 @@ main(
         pokedex);
 
     indigo::Application app(
+        config,
         platform,
         ui);
 

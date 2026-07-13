@@ -14,6 +14,7 @@
 
 #include "platform/IPlatform.h"
 #include "ui/IUserInterface.h"
+#include "common/config/IConfiguration.h"
 
 namespace indigo
 {
@@ -24,6 +25,7 @@ class Application
 public:
 
     Application(
+        IConfiguration& config,
         IPlatform& platform,
         IUserInterface& ui);
 
@@ -42,6 +44,7 @@ public:
 
 private:
 
+    IConfiguration& _config;
     IPlatform& _platform;
     IUserInterface& _ui;
 

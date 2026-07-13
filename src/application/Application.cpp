@@ -14,9 +14,11 @@ namespace indigo
 {
 
 Application::Application(
+    IConfiguration& config,
     IPlatform& platform,
     IUserInterface& ui)
-    : _platform(platform)
+    : _config(config)
+    , _platform(platform)
     , _ui(ui)
 {
 }
@@ -26,6 +28,7 @@ Application::run()
 {
     DEBUG("Hello Project Indigo.");
 
+    _config.load();
     _platform.initialize();
     _ui.initialize();
 
