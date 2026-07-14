@@ -35,9 +35,7 @@ Pokemon
 Pokedex::getPokemon(
     uint16_t pokemonId) const
 {
-    Pokemon pokemon = _pokemonRepository.get(pokemonId);
-
-    return pokemon;
+    return _pokemonRepository.get(pokemonId);
 }
 
 std::vector<indigo::Evolution>
