@@ -30,13 +30,26 @@ UserInterface::initialize()
 
     if (details.has_value())
     {
-        DEBUG("Pokemon #1 is {} with a typing of {}.",
-            details.value().pokemon().name(),
-            details.value().pokemon().types()[0].name());
+        const auto& pokemon = details.value().pokemon();
 
-        DEBUG("It will evolve to {} at level {}",
-            details.value().evolutions()[0].to(),
-            details.value().evolutions()[0].method().level());
+        if (!pokemon.types().empty()) {
+            DEBUG("Pokemon #1 is {} with a typing of {}.",
+                pokemon.name(),
+                pokemon.types().front().name());
+        } else {
+            DEBUG("Pokemon #1 is {} with no typing.",
+                pokemon.name());
+        }
+
+        if (!details.value().evolutions().empty()) {
+            const auto& evolution = details.value().evolutions().front();
+
+            DEBUG("It will evolve to {} at level {}.",
+                evolution.to(),
+                evolution.method().level());
+        } else {
+            DEBUG("It has no evolutions.");
+        }
     }
     else
     {
