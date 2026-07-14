@@ -29,7 +29,7 @@ Pokemons::all()
             pokemon.addType(types::GRASS);
             pokemon.addType(types::POISON);
 
-            pokemon.addAbility(abilities::OVERGROWTH);
+            pokemon.addAbility(abilities::OVERGROW);
 
             return pokemon;
         }(),
@@ -43,7 +43,7 @@ Pokemons::all()
             pokemon.addType(types::GRASS);
             pokemon.addType(types::POISON);
 
-            pokemon.addAbility(abilities::OVERGROWTH);
+            pokemon.addAbility(abilities::OVERGROW);
 
             return pokemon;
         }(),
@@ -57,7 +57,7 @@ Pokemons::all()
             pokemon.addType(types::GRASS);
             pokemon.addType(types::POISON);
 
-            pokemon.addAbility(abilities::OVERGROWTH);
+            pokemon.addAbility(abilities::OVERGROW);
 
             return pokemon;
         }()

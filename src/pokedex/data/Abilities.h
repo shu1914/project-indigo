@@ -16,7 +16,7 @@
 namespace indigo::abilities
 {
     extern const Ability BLAZE;
-    extern const Ability OVERGROWTH;
+    extern const Ability OVERGROW;
     extern const Ability TORRENT;
 
 } // end namespace indigo::abilities
