@@ -80,7 +80,9 @@ Build the Pokémon domain.
 - [x] Create PokemonDetails model
 
 #### Repository
-- [ ] Design repository interface
+- [x] Design repository interface
+  - [x] PokemonRepository
+  - [ ] EvolutionRepository
 - [ ] Local repository implementation
 
 #### Sample Data
