@@ -76,7 +76,8 @@ Build the Pokémon domain.
 - [x] Create Pokémon model
 - [x] Create Type model
 - [x] Create Ability model
-- [ ] Create Evolution model
+- [x] Create Evolution model
+- [x] Create PokemonDetails model
 
 #### Repository
 - [ ] Design repository interface
