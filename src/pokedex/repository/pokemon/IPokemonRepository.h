@@ -7,8 +7,8 @@
  * @copyright Copyright (c) 2026
  */
 
-#ifndef I_POKEMON_REPOSITORY
-#define I_POKEMON_REPOSITORY
+#ifndef I_POKEMON_REPOSITORY_H
+#define I_POKEMON_REPOSITORY_H
 
 #include "../../model/pokemon/Pokemon.h"
 
@@ -28,4 +28,4 @@ public:
 
 }
 
-#endif // end I_POKEMON_REPOSITORY
+#endif // end I_POKEMON_REPOSITORY_H
