@@ -10,12 +10,16 @@
 #include "Pokedex.h"
 #include "common/logger/LogMacro.h"
 #include "model/pokemon/Pokemon.h"
-#include "data/Types.h"
-#include "data/Abilities.h"
 #include "data/Evolutions.h"
 
 namespace indigo
 {
+
+Pokedex::Pokedex(
+    IPokemonRepository& pokemonRepository)
+    : _pokemonRepository(pokemonRepository)
+{
+}
 
 bool
 Pokedex::initialize()
@@ -25,23 +29,16 @@ Pokedex::initialize()
     return true;
 }
 
-Pokemon
+std::optional<Pokemon>
 Pokedex::getPokemon(
-    uint16_t pokemonId) const
+    uint32_t  pokemonId) const
 {
-    // TODO(repository): Load Pokémon from the configured repository.
-    Pokemon pokemon(1,
-        "Bulbasaur");
-
-    pokemon.addType(types::GRASS);
-    pokemon.addAbility(abilities::OVERGROWTH);
-
-    return pokemon;
+    return _pokemonRepository.get(pokemonId);
 }
 
 std::vector<indigo::Evolution>
 Pokedex::getNextEvolutions(
-    uint16_t pokemonId) const
+    uint32_t  pokemonId) const
 {
     std::vector<Evolution> evolutions;
 
@@ -56,12 +53,19 @@ Pokedex::getNextEvolutions(
     return evolutions;
 }
 
-PokemonDetails
+std::optional<PokemonDetails>
 Pokedex::getPokemonDetails(
-    uint16_t pokemonId) const
+    uint32_t  pokemonId) const
 {
+    std::optional<Pokemon> pokemon = getPokemon(pokemonId);
+
+    if (!pokemon.has_value())
+    {
+        return std::nullopt;
+    }
+
     return PokemonDetails(
-        getPokemon(pokemonId),
+        pokemon.value(),
         getNextEvolutions(pokemonId));
 }
 

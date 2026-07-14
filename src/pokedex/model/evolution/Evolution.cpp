@@ -13,8 +13,8 @@ namespace indigo
 {
 
 Evolution::Evolution(
-    uint16_t from,
-    uint16_t to,
+    uint32_t  from,
+    uint32_t  to,
     const EvolutionMethod& method)
     : _from(from)
     , _to(to)
@@ -22,13 +22,13 @@ Evolution::Evolution(
 {
 }
 
-uint16_t
+uint32_t 
 Evolution::from() const
 {
     return _from;
 }
 
-uint16_t
+uint32_t 
 Evolution::to() const
 {
     return _to;

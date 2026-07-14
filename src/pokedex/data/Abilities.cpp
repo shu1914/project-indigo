@@ -16,9 +16,9 @@ const Ability BLAZE(
     66,
     "Blaze");
 
-const Ability OVERGROWTH(
+const Ability OVERGROW(
     65,
-    "Overgrowth");
+    "Overgrow");
 
 const Ability TORRENT(
     67,

@@ -18,6 +18,7 @@ namespace indigo::types
     extern const Type FIRE;
     extern const Type WATER;
     extern const Type GRASS;
+    extern const Type POISON;
 
 } // end namespace indigo::types
 

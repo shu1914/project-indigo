@@ -20,19 +20,19 @@ class Evolution
 {
 public:
     Evolution(
-        uint16_t from,
-        uint16_t to,
+        uint32_t  from,
+        uint32_t  to,
         const EvolutionMethod& method);
 
-    uint16_t from() const;
+    uint32_t  from() const;
     
-    uint16_t to() const;
+    uint32_t  to() const;
 
     const EvolutionMethod method() const;
 
 private:
-    uint16_t _from;
-    uint16_t _to;
+    uint32_t  _from;
+    uint32_t  _to;
     const EvolutionMethod _method;
 
 };
