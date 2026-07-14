@@ -11,6 +11,9 @@
 #define I_POKEDEX_H
 
 #include <string>
+#include <vector>
+
+#include "model/evolution/Evolution.h"
 
 namespace indigo
 {
@@ -24,7 +27,12 @@ public:
 
     virtual bool initialize() = 0;
 
-    virtual std::string getPokemonName(int id) = 0;
+    virtual std::string getPokemonName(
+        uint16_t pokemonId) = 0;
+
+    virtual std::vector<Evolution>
+    getNextEvolutions(
+        uint16_t pokemonId) const = 0;
 
 }; // end class IPokedex
 

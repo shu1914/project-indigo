@@ -1,6 +1,7 @@
 add_library(data
     Types.cpp
     Abilities.cpp
+    Evolutions.cpp
 )
 
 target_include_directories(data PUBLIC

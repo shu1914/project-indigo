@@ -9,6 +9,10 @@
 
 #include "Pokedex.h"
 #include "common/logger/LogMacro.h"
+#include "model/pokemon/Pokemon.h"
+#include "data/Types.h"
+#include "data/Abilities.h"
+#include "data/Evolutions.h"
 
 namespace indigo
 {
@@ -23,9 +27,26 @@ Pokedex::initialize()
 
 std::string
 Pokedex::getPokemonName(
-    int id)
+    uint16_t pokemonId)
 {
     return "Bulbasaur";
+}
+
+std::vector<indigo::Evolution>
+indigo::Pokedex::getNextEvolutions(
+    uint16_t pokemonId) const
+{
+    std::vector<Evolution> evolutions;
+
+    for (const Evolution& evolution : Evolutions::all())
+    {
+        if (evolution.from() == pokemonId)
+        {
+            evolutions.push_back(evolution);
+        }
+    }
+
+    return evolutions;
 }
 
 } // end namespace indigo

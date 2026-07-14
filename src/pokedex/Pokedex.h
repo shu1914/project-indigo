@@ -22,7 +22,11 @@ public:
 
     bool initialize() override;
 
-    std::string getPokemonName(int id) override;
+    std::string getPokemonName(
+        uint16_t pokemonId) override;
+
+    std::vector<Evolution> getNextEvolutions(
+        uint16_t pokemonId) const override;
 
 }; // end class Pokedex
 
