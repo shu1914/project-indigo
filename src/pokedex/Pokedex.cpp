@@ -10,8 +10,6 @@
 #include "Pokedex.h"
 #include "common/logger/LogMacro.h"
 #include "model/pokemon/Pokemon.h"
-#include "data/Types.h"
-#include "data/Abilities.h"
 #include "data/Evolutions.h"
 
 namespace indigo
