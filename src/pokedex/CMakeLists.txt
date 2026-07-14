@@ -17,4 +17,5 @@ target_link_libraries(pokedex PUBLIC
     type
     ability
     evolution
+    pokemon_details
 )

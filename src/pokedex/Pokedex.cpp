@@ -25,15 +25,22 @@ Pokedex::initialize()
     return true;
 }
 
-std::string
-Pokedex::getPokemonName(
-    uint16_t pokemonId)
+Pokemon
+Pokedex::getPokemon(
+    uint16_t pokemonId) const
 {
-    return "Bulbasaur";
+    // TODO(repository): Load Pokémon from the configured repository.
+    Pokemon pokemon(1,
+        "Bulbasaur");
+
+    pokemon.addType(types::GRASS);
+    pokemon.addAbility(abilities::OVERGROWTH);
+
+    return pokemon;
 }
 
 std::vector<indigo::Evolution>
-indigo::Pokedex::getNextEvolutions(
+Pokedex::getNextEvolutions(
     uint16_t pokemonId) const
 {
     std::vector<Evolution> evolutions;
@@ -47,6 +54,15 @@ indigo::Pokedex::getNextEvolutions(
     }
 
     return evolutions;
+}
+
+PokemonDetails
+Pokedex::getPokemonDetails(
+    uint16_t pokemonId) const
+{
+    return PokemonDetails(
+        getPokemon(pokemonId),
+        getNextEvolutions(pokemonId));
 }
 
 } // end namespace indigo

@@ -26,7 +26,16 @@ UserInterface::initialize()
 
     _pokedex.initialize();
 
-    DEBUG("Pokemon #1 is {}", _pokedex.getPokemonName(1));
+    // TODO: Remove this later. For verification only
+    PokemonDetails details = _pokedex.getPokemonDetails(1);
+    
+    DEBUG("Pokemon #1 is {} with a typing of {}.",
+        details.pokemon().name(),
+        details.pokemon().types()[0].name());
+
+    DEBUG("It will evolve to {} at level {}",
+        details.evolutions()[0].to(),
+        details.evolutions()[0].method().level());
 
     return true;
 }
