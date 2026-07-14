@@ -22,7 +22,7 @@ class Pokedex : public IPokedex
 public:
 
     explicit Pokedex(
-        IPokemonRepository& IPokemonRepository);
+        IPokemonRepository& pokemonRepository);
 
     bool initialize() override;
 
