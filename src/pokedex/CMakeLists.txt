@@ -14,10 +14,6 @@ target_link_libraries(pokedex PUBLIC
     data
 
     ## models
-    pokemon
-    type
-    ability
-    evolution
     pokemon_details
 
     ## repository

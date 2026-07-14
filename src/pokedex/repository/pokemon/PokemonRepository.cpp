@@ -8,6 +8,7 @@
  */
 
 #include "PokemonRepository.h"
+#include "../../data/Pokemons.h"
 
 namespace indigo
 {
@@ -16,10 +17,17 @@ Pokemon
 PokemonRepository::get(
     uint16_t pokemonId) const
 {
-    // TODO: Remove once data are populated
+    for (const Pokemon& pokemon : Pokemons::all())
+    {
+        if (pokemon.id() == pokemonId)
+        {
+            return pokemon;
+        }
+    }
+
     return Pokemon(
-        1,
-        "Bulbasaur");
+        0,
+        "None");
 }
 
 } // end namespace indigo

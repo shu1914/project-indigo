@@ -37,10 +37,6 @@ Pokedex::getPokemon(
 {
     Pokemon pokemon = _pokemonRepository.get(pokemonId);
 
-    // TODO: remove this later once the hard coded data for pokemon is done
-    pokemon.addType(types::GRASS);
-    pokemon.addAbility(abilities::OVERGROWTH);
-
     return pokemon;
 }
 

@@ -7,4 +7,5 @@ target_include_directories(pokemon_repository PUBLIC
 )
 
 target_link_libraries(pokemon_repository PUBLIC
+    data
 )
