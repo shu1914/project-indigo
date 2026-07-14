@@ -26,16 +26,22 @@ UserInterface::initialize()
 
     _pokedex.initialize();
 
-    // TODO: Remove this later. For verification only
-    PokemonDetails details = _pokedex.getPokemonDetails(1);
-    
-    DEBUG("Pokemon #1 is {} with a typing of {}.",
-        details.pokemon().name(),
-        details.pokemon().types()[0].name());
+    std::optional<PokemonDetails> details = _pokedex.getPokemonDetails(1);
 
-    DEBUG("It will evolve to {} at level {}",
-        details.evolutions()[0].to(),
-        details.evolutions()[0].method().level());
+    if (details.has_value())
+    {
+        DEBUG("Pokemon #1 is {} with a typing of {}.",
+            details.value().pokemon().name(),
+            details.value().pokemon().types()[0].name());
+
+        DEBUG("It will evolve to {} at level {}",
+            details.value().evolutions()[0].to(),
+            details.value().evolutions()[0].method().level());
+    }
+    else
+    {
+        DEBUG("Pokemon #1 not found.");
+    }
 
     return true;
 }

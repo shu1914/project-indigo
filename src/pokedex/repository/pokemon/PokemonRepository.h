@@ -20,7 +20,7 @@ class PokemonRepository : public IPokemonRepository
 
 public:
 
-    Pokemon get(
+    std::optional<Pokemon> get(
         uint32_t  pokemonId) const override;
 
 };

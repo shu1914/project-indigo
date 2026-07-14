@@ -13,7 +13,7 @@
 namespace indigo
 {
 
-Pokemon
+std::optional<Pokemon>
 PokemonRepository::get(
     uint32_t  pokemonId) const
 {
@@ -25,9 +25,7 @@ PokemonRepository::get(
         }
     }
 
-    return Pokemon(
-        0,
-        "None");
+    return std::nullopt;
 }
 
 } // end namespace indigo

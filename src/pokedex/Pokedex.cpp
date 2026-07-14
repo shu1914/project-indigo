@@ -29,7 +29,7 @@ Pokedex::initialize()
     return true;
 }
 
-Pokemon
+std::optional<Pokemon>
 Pokedex::getPokemon(
     uint32_t  pokemonId) const
 {
@@ -53,12 +53,19 @@ Pokedex::getNextEvolutions(
     return evolutions;
 }
 
-PokemonDetails
+std::optional<PokemonDetails>
 Pokedex::getPokemonDetails(
     uint32_t  pokemonId) const
 {
+    std::optional<Pokemon> pokemon = getPokemon(pokemonId);
+
+    if (!pokemon.has_value())
+    {
+        return std::nullopt;
+    }
+
     return PokemonDetails(
-        getPokemon(pokemonId),
+        pokemon.value(),
         getNextEvolutions(pokemonId));
 }
 

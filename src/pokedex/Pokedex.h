@@ -26,13 +26,13 @@ public:
 
     bool initialize() override;
 
-    Pokemon getPokemon(
+    std::optional<Pokemon> getPokemon(
         uint32_t  pokemonId) const override;
 
     std::vector<Evolution> getNextEvolutions(
         uint32_t  pokemonId) const override;
 
-    PokemonDetails getPokemonDetails(
+    std::optional<PokemonDetails> getPokemonDetails(
         uint32_t  pokemonId) const override;
 
 private:

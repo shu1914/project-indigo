@@ -3,13 +3,14 @@
  * @brief Defines the pokedex abstraction.
  * @author As-Harrie Dianalan (asharrie.dianalan@gmail.com)
  * @date 2026-07-13
- * 
+ *
  * @copyright Copyright (c) 2026
  */
 
 #ifndef I_POKEDEX_H
 #define I_POKEDEX_H
 
+#include <optional>
 #include <string>
 #include <vector>
 
@@ -29,13 +30,13 @@ public:
 
     virtual bool initialize() = 0;
 
-    virtual Pokemon getPokemon(
+    virtual std::optional<Pokemon> getPokemon(
         uint32_t  pokemonId) const = 0;
 
     virtual std::vector<Evolution> getNextEvolutions(
         uint32_t  pokemonId) const = 0;
 
-    virtual PokemonDetails getPokemonDetails(
+    virtual std::optional<PokemonDetails> getPokemonDetails(
         uint32_t  pokemonId) const = 0;
 
 }; // end class IPokedex
