@@ -11,6 +11,7 @@
 #define POKEDEX_H
 
 #include "IPokedex.h"
+#include "repository/pokemon/IPokemonRepository.h"
 
 namespace indigo
 {
@@ -19,6 +20,9 @@ class Pokedex : public IPokedex
 {
 
 public:
+
+    explicit Pokedex(
+        IPokemonRepository& IPokemonRepository);
 
     bool initialize() override;
 
@@ -30,6 +34,10 @@ public:
 
     PokemonDetails getPokemonDetails(
         uint16_t pokemonId) const override;
+
+private:
+    
+    IPokemonRepository& _pokemonRepository;
 
 }; // end class Pokedex
 

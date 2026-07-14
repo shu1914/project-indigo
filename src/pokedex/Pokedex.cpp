@@ -17,6 +17,12 @@
 namespace indigo
 {
 
+Pokedex::Pokedex(
+    IPokemonRepository& pokemonRepository)
+    : _pokemonRepository(pokemonRepository)
+{
+}
+
 bool
 Pokedex::initialize()
 {
@@ -29,10 +35,9 @@ Pokemon
 Pokedex::getPokemon(
     uint16_t pokemonId) const
 {
-    // TODO(repository): Load Pokémon from the configured repository.
-    Pokemon pokemon(1,
-        "Bulbasaur");
+    Pokemon pokemon = _pokemonRepository.get(pokemonId);
 
+    // TODO: remove this later once the hard coded data for pokemon is done
     pokemon.addType(types::GRASS);
     pokemon.addAbility(abilities::OVERGROWTH);
 

@@ -1,5 +1,6 @@
 add_subdirectory(model)
 add_subdirectory(data)
+add_subdirectory(repository)
 
 add_library(pokedex
     Pokedex.cpp
@@ -18,4 +19,7 @@ target_link_libraries(pokedex PUBLIC
     ability
     evolution
     pokemon_details
+
+    ## repository
+    pokemon_repository
 )
