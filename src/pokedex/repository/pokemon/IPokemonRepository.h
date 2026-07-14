@@ -23,7 +23,7 @@ public:
     virtual ~IPokemonRepository() = default;
 
     virtual Pokemon get(
-        uint16_t pokemonId) const = 0;
+        uint32_t  pokemonId) const = 0;
 };
 
 }

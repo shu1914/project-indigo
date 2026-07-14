@@ -21,7 +21,7 @@ class PokemonRepository : public IPokemonRepository
 public:
 
     Pokemon get(
-        uint16_t pokemonId) const override;
+        uint32_t  pokemonId) const override;
 
 };
 

@@ -31,14 +31,14 @@ Pokedex::initialize()
 
 Pokemon
 Pokedex::getPokemon(
-    uint16_t pokemonId) const
+    uint32_t  pokemonId) const
 {
     return _pokemonRepository.get(pokemonId);
 }
 
 std::vector<indigo::Evolution>
 Pokedex::getNextEvolutions(
-    uint16_t pokemonId) const
+    uint32_t  pokemonId) const
 {
     std::vector<Evolution> evolutions;
 
@@ -55,7 +55,7 @@ Pokedex::getNextEvolutions(
 
 PokemonDetails
 Pokedex::getPokemonDetails(
-    uint16_t pokemonId) const
+    uint32_t  pokemonId) const
 {
     return PokemonDetails(
         getPokemon(pokemonId),

@@ -30,13 +30,13 @@ public:
     virtual bool initialize() = 0;
 
     virtual Pokemon getPokemon(
-        uint16_t pokemonId) const = 0;
+        uint32_t  pokemonId) const = 0;
 
     virtual std::vector<Evolution> getNextEvolutions(
-        uint16_t pokemonId) const = 0;
+        uint32_t  pokemonId) const = 0;
 
     virtual PokemonDetails getPokemonDetails(
-        uint16_t pokemonId) const = 0;
+        uint32_t  pokemonId) const = 0;
 
 }; // end class IPokedex
 

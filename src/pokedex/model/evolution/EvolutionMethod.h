@@ -25,14 +25,14 @@ class EvolutionMethod
 public:
     EvolutionMethod(
         EvolutionMethodType type,
-        uint16_t level);
+        uint32_t  level);
 
     EvolutionMethodType type() const;
-    uint16_t level() const;
+    uint32_t  level() const;
 
 private:
     EvolutionMethodType _type;
-    uint16_t _level;
+    uint32_t  _level;
 };
 
 }

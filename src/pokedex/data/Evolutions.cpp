@@ -13,9 +13,9 @@ namespace
 {
 
 // temporary
-constexpr uint16_t BULBASAUR = 1;
-constexpr uint16_t IVYSAUR   = 2;
-constexpr uint16_t VENUSAUR  = 3;
+constexpr uint32_t  BULBASAUR = 1;
+constexpr uint32_t  IVYSAUR   = 2;
+constexpr uint32_t  VENUSAUR  = 3;
 
 } // anonymous namespace
 

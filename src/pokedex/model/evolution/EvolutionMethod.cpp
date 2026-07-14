@@ -14,7 +14,7 @@ namespace indigo
 
 EvolutionMethod::EvolutionMethod(
     EvolutionMethodType type,
-    uint16_t level)
+    uint32_t  level)
     : _type(type)
     , _level(level)
 {
@@ -26,7 +26,7 @@ EvolutionMethod::type() const
     return _type;
 }
 
-uint16_t
+uint32_t 
 EvolutionMethod::level() const
 {
     return _level;
