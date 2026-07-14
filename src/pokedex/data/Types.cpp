@@ -25,7 +25,7 @@ const Type GRASS(
     "Grass");
 
 const Type POISON(
-    8,
+    4,
     "Poison");
 
 } // end namespace indigo::types
