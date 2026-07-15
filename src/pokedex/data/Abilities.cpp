@@ -13,111 +13,111 @@ namespace indigo::abilities
 {
 
 const Ability OVERGROW(
-    1,
+    65,
     "Overgrow");
 
 const Ability CHLOROPHYLL(
-    2,
+    34,
     "Chlorophyll");
 
 const Ability BLAZE(
-    3,
+    66,
     "Blaze");
 
 const Ability SOLAR_POWER(
-    4,
+    94,
     "Solar Power");
 
 const Ability TORRENT(
-    5,
+    67,
     "Torrent");
 
 const Ability RAIN_DISH(
-    6,
+    44,
     "Rain Dish");
 
 const Ability SHIELD_DUST(
-    7,
+    19,
     "Shield Dust");
 
 const Ability RUN_AWAY(
-    8,
+    50,
     "Run Away");
 
 const Ability TINTED_LENS(
-    9,
+    110,
     "Tinted Lens");
 
 const Ability SWARM(
-    10,
+    68,
     "Swarm");
 
 const Ability SNIPER(
-    11,
+    97,
     "Sniper");
 
 const Ability KEEN_EYE(
-    12,
+    51,
     "Keen Eye");
 
 const Ability TANGLED_FEET(
-    13,
+    77,
     "Tangled Feet");
 
 const Ability BIG_PECKS(
-    14,
+    145,
     "Big Pecks");
 
 const Ability GUTS(
-    15,
+    62,
     "Guts");
 
 const Ability HUSTLE(
-    16,
+    55,
     "Hustle");
 
 const Ability INTIMIDATE(
-    17,
+    22,
     "Intimidate");
 
 const Ability STATIC(
-    18,
+    9,
     "Static");
 
 const Ability LIGHTNING_ROD(
-    19,
+    31,
     "Lightning Rod");
 
 const Ability SAND_VEIL(
-    20,
+    8,
     "Sand Veil");
 
 const Ability SAND_RUSH(
-    21,
+    146,
     "Sand Rush");
 
 const Ability POISON_POINT(
-    22,
+    38,
     "Poison Point");
 
 const Ability RIVALRY(
-    23,
+    79,
     "Rivalry");
 
 const Ability SHEER_FORCE(
-    24,
+    125,
     "Sheer Force");
 
 const Ability COMPOUND_EYES(
-    25,
+    14,
     "Compound Eyes");
 
 const Ability SHED_SKIN(
-    26,
+    61,
     "Shed Skin");
 
 const Ability UNNERVE(
-    27,
+    127,
     "Unnerve");
 
 } // end namespace indigo::types
