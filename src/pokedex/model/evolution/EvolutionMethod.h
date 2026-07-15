@@ -47,7 +47,10 @@ public:
     Item item() const;
 
 private:
-    EvolutionMethod() = default;
+    explicit EvolutionMethod(EvolutionMethodType type)
+        : _type(type)
+    {
+    }
 
     EvolutionMethodType _type;
 

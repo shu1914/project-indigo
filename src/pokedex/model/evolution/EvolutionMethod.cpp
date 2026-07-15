@@ -17,9 +17,7 @@ namespace indigo
 EvolutionMethod
 EvolutionMethod::level(uint32_t level)
 {
-    EvolutionMethod method;
-
-    method._type = EvolutionMethodType::LEVEL;
+    EvolutionMethod method(EvolutionMethodType::LEVEL);
     method._level = level;
 
     return method;
@@ -33,9 +31,7 @@ EvolutionMethod::item(Item item)
         throw std::invalid_argument("Item evolution requires a valid item.");
     }
 
-    EvolutionMethod method;
-
-    method._type = EvolutionMethodType::ITEM;
+    EvolutionMethod method(EvolutionMethodType::ITEM);
     method._item = item;
 
     return method;
@@ -44,21 +40,13 @@ EvolutionMethod::item(Item item)
 EvolutionMethod
 EvolutionMethod::trade()
 {
-    EvolutionMethod method;
-
-    method._type = EvolutionMethodType::TRADE;
-
-    return method;
+    return EvolutionMethod(EvolutionMethodType::TRADE);
 }
 
 EvolutionMethod
 EvolutionMethod::friendship()
 {
-    EvolutionMethod method;
-
-    method._type = EvolutionMethodType::FRIENDSHIP;
-
-    return method;
+    return EvolutionMethod(EvolutionMethodType::FRIENDSHIP);
 }
 
 EvolutionMethodType
