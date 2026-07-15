@@ -17,6 +17,10 @@ namespace indigo
 EvolutionMethod
 EvolutionMethod::level(uint32_t level)
 {
+    if (level == 0)
+    {
+        throw std::invalid_argument("Level evolution requires a positive level.");
+    }
     EvolutionMethod method(EvolutionMethodType::LEVEL);
     method._level = level;
 
