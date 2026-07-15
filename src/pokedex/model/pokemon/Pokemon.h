@@ -25,6 +25,12 @@ public:
         uint32_t id,
         const std::string& name);
 
+    Pokemon(
+        uint32_t id,
+        const std::string& name,
+        std::initializer_list<Type> types,
+        std::initializer_list<Ability> abilities);
+
     uint32_t id() const;
     const std::string& name() const;
 
