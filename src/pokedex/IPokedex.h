@@ -31,7 +31,7 @@ public:
     virtual bool initialize() = 0;
 
     virtual std::optional<PokemonDetails> getPokemonDetails(
-        uint32_t  pokemonId) const = 0;
+        uint32_t pokemonId) const = 0;
 
 }; // end class IPokedex
 

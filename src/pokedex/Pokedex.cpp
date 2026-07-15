@@ -33,7 +33,7 @@ Pokedex::initialize()
 
 std::optional<PokemonDetails>
 Pokedex::getPokemonDetails(
-    uint32_t  pokemonId) const
+    uint32_t pokemonId) const
 {
     std::optional<Pokemon> pokemon = _pokemonRepository.get(pokemonId);
 

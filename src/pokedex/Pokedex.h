@@ -29,7 +29,7 @@ public:
     bool initialize() override;
 
     std::optional<PokemonDetails> getPokemonDetails(
-        uint32_t  pokemonId) const override;
+        uint32_t pokemonId) const override;
 
 private:
     

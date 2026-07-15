@@ -15,7 +15,7 @@ namespace indigo
 
 std::optional<Pokemon>
 PokemonRepository::get(
-    uint32_t  pokemonId) const
+    uint32_t pokemonId) const
 {
     for (const Pokemon& pokemon : Pokemons::all())
     {

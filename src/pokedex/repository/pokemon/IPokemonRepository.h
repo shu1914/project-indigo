@@ -24,7 +24,7 @@ public:
     virtual ~IPokemonRepository() = default;
 
     virtual std::optional<Pokemon> get(
-        uint32_t  pokemonId) const = 0;
+        uint32_t pokemonId) const = 0;
 };
 
 }
