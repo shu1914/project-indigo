@@ -48,9 +48,10 @@ UserInterface::initialize()
         if (!details.value().evolutions().empty())
         {
             const auto& evolution = details.value().evolutions().front();
+            const auto method = evolution.method();
 
             // TODO: For now, print the pokemon ID value rather than name. Refactor later
-            switch (evolution.method().type())
+            switch (method.type())
             {
                 case EvolutionMethodType::LEVEL:
                 {
