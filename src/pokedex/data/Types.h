@@ -15,10 +15,24 @@
 
 namespace indigo::types
 {
+    extern const Type NORMAL;
     extern const Type FIRE;
     extern const Type WATER;
+    extern const Type ELECTRIC;
     extern const Type GRASS;
+    extern const Type ICE;
+    extern const Type FIGHTING;
     extern const Type POISON;
+    extern const Type GROUND;
+    extern const Type FLYING;
+    extern const Type PSYCHIC;
+    extern const Type BUG;
+    extern const Type ROCK;
+    extern const Type GHOST;
+    extern const Type DRAGON;
+    extern const Type DARK;
+    extern const Type STEEL;
+    extern const Type FAIRY;
 
 } // end namespace indigo::types
 
