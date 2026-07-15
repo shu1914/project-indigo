@@ -20,6 +20,17 @@ Pokemon::Pokemon(
 {
 }
 
+Pokemon::Pokemon(
+    uint32_t id,
+    const std::string& name,
+    std::initializer_list<Type> types,
+    std::initializer_list<Ability> abilities)
+    : Pokemon(id, name)
+{
+    _types.insert(_types.end(), types.begin(), types.end());
+    _abilities.insert(_abilities.end(), abilities.begin(), abilities.end());
+}
+
 uint32_t
 Pokemon::id() const
 {

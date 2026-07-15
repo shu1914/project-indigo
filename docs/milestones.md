@@ -88,8 +88,8 @@ Build the Pokémon domain.
   - [x] EvolutionRepository
 
 #### Sample Data
-- [ ] Load sample Pokémon
-- [ ] Verify data access
+- [x] Load sample Pokémon
+- [x] Verify data access
 - [ ] Unit test repository
 
 ---
