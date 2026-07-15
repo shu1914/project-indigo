@@ -15,6 +15,7 @@
 #include "pokedex/Pokedex.h"
 #include "application/Application.h"
 #include "pokedex/repository/pokemon/PokemonRepository.h"
+#include "pokedex/repository/evolution/EvolutionRepository.h"
 
 int
 main(
@@ -33,8 +34,11 @@ main(
 
     indigo::PokemonRepository pokemonRepository;
 
+    indigo::EvolutionRepository evolutionRepository;
+
     indigo::Pokedex pokedex(
-        pokemonRepository);
+        pokemonRepository,
+        evolutionRepository);
 
     indigo::UserInterface ui(
         pokedex);

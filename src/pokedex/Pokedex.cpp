@@ -16,8 +16,10 @@ namespace indigo
 {
 
 Pokedex::Pokedex(
-    IPokemonRepository& pokemonRepository)
+    IPokemonRepository& pokemonRepository,
+    IEvolutionRepository& evolutionRepository)
     : _pokemonRepository(pokemonRepository)
+    , _evolutionRepository(evolutionRepository)
 {
 }
 
@@ -29,44 +31,22 @@ Pokedex::initialize()
     return true;
 }
 
-std::optional<Pokemon>
-Pokedex::getPokemon(
-    uint32_t  pokemonId) const
-{
-    return _pokemonRepository.get(pokemonId);
-}
-
-std::vector<indigo::Evolution>
-Pokedex::getNextEvolutions(
-    uint32_t  pokemonId) const
-{
-    std::vector<Evolution> evolutions;
-
-    for (const Evolution& evolution : Evolutions::all())
-    {
-        if (evolution.from() == pokemonId)
-        {
-            evolutions.push_back(evolution);
-        }
-    }
-
-    return evolutions;
-}
-
 std::optional<PokemonDetails>
 Pokedex::getPokemonDetails(
     uint32_t  pokemonId) const
 {
-    std::optional<Pokemon> pokemon = getPokemon(pokemonId);
+    std::optional<Pokemon> pokemon = _pokemonRepository.get(pokemonId);
 
     if (!pokemon.has_value())
     {
         return std::nullopt;
     }
 
+    // can return pokemon with 0 evolution
+    // must be handled where `getPokemonDetails` is called
     return PokemonDetails(
         pokemon.value(),
-        getNextEvolutions(pokemonId));
+        _evolutionRepository.get(pokemonId));
 }
 
 } // end namespace indigo

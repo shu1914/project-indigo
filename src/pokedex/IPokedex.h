@@ -30,12 +30,6 @@ public:
 
     virtual bool initialize() = 0;
 
-    virtual std::optional<Pokemon> getPokemon(
-        uint32_t  pokemonId) const = 0;
-
-    virtual std::vector<Evolution> getNextEvolutions(
-        uint32_t  pokemonId) const = 0;
-
     virtual std::optional<PokemonDetails> getPokemonDetails(
         uint32_t  pokemonId) const = 0;
 
