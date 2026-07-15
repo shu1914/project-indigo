@@ -10,6 +10,7 @@
 #include <stdexcept>
 
 #include "EvolutionMethod.h"
+#include <assert.h>
 
 namespace indigo
 {
@@ -62,12 +63,14 @@ EvolutionMethod::type() const
 uint32_t 
 EvolutionMethod::level() const
 {
+    assert(_type == EvolutionMethodType::LEVEL);
     return _level;
 }
 
 Item
 EvolutionMethod::item() const
 {
+    assert(_type == EvolutionMethodType::ITEM);
     return _item;
 }
 
