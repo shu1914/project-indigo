@@ -42,9 +42,6 @@ namespace indigo::abilities
     extern const Ability POISON_POINT;
     extern const Ability RIVALRY;
     extern const Ability SHEER_FORCE;
-    extern const Ability COMPOUND_EYES;
-    extern const Ability SHED_SKIN;
-    extern const Ability UNNERVE;
 
 } // end namespace indigo::abilities
 
