@@ -75,7 +75,7 @@ UserInterface::initialize()
                 break;
                 case EvolutionMethodType::FRIENDSHIP:
                 {
-                    DEBUG("It will evolve to {} with max friendship.",
+                    DEBUG("It will evolve to {} through friendship.",
                         evolution.to());
                 }
                 break;
