@@ -62,7 +62,7 @@ Pokemons::all()
 
         Pokemon(11, "Metapod",
             {types::BUG},
-            {abilities::SHIELD_DUST}),
+            {abilities::SHED_SKIN}),
 
         Pokemon(12, "Butterfree",
             {types::BUG, types::FLYING},
@@ -74,7 +74,7 @@ Pokemons::all()
 
         Pokemon(14, "Kakuna",
             {types::BUG, types::POISON},
-            {abilities::SHIELD_DUST}),
+            {abilities::SHED_SKIN}),
 
         Pokemon(15, "Beedrill",
             {types::BUG, types::POISON},
