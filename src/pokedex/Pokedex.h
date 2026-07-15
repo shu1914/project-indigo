@@ -12,6 +12,7 @@
 
 #include "IPokedex.h"
 #include "repository/pokemon/IPokemonRepository.h"
+#include "repository/evolution/IEvolutionRepository.h"
 
 namespace indigo
 {
@@ -22,7 +23,8 @@ class Pokedex : public IPokedex
 public:
 
     explicit Pokedex(
-        IPokemonRepository& pokemonRepository);
+        IPokemonRepository& pokemonRepository,
+        IEvolutionRepository& evolutionRepository);
 
     bool initialize() override;
 
@@ -38,6 +40,7 @@ public:
 private:
     
     IPokemonRepository& _pokemonRepository;
+    IEvolutionRepository& _evolutionRepository;
 
 }; // end class Pokedex
 

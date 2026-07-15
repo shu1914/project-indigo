@@ -18,4 +18,5 @@ target_link_libraries(pokedex PUBLIC
 
     ## repository
     pokemon_repository
+    evolution_repository
 )

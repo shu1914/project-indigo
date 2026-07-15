@@ -16,8 +16,10 @@ namespace indigo
 {
 
 Pokedex::Pokedex(
-    IPokemonRepository& pokemonRepository)
+    IPokemonRepository& pokemonRepository,
+    IEvolutionRepository& evolutionRepository)
     : _pokemonRepository(pokemonRepository)
+    , _evolutionRepository(evolutionRepository)
 {
 }
 
@@ -64,9 +66,11 @@ Pokedex::getPokemonDetails(
         return std::nullopt;
     }
 
+    // can return pokemon with 0 evolution
+    // must be handled where `getPokemonDetails` is called
     return PokemonDetails(
         pokemon.value(),
-        getNextEvolutions(pokemonId));
+        _evolutionRepository.get(pokemonId));
 }
 
 } // end namespace indigo
