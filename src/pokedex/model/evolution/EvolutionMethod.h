@@ -17,22 +17,42 @@ namespace indigo
 
 enum class EvolutionMethodType
 {
-    LEVEL
+    LEVEL,
+    ITEM,
+    TRADE,
+    FRIENDSHIP
+};
+
+enum class Item
+{
+    NONE,
+
+    MOON_STONE,
+    THUNDER_STONE,
+    FIRE_STONE,
+    WATER_STONE,
+    LEAF_STONE
 };
 
 class EvolutionMethod
 {
 public:
-    EvolutionMethod(
-        EvolutionMethodType type,
-        uint32_t level);
+    static EvolutionMethod level(uint32_t level);
+    static EvolutionMethod item(Item item);
+    static EvolutionMethod trade();
+    static EvolutionMethod friendship();
 
     EvolutionMethodType type() const;
     uint32_t level() const;
+    Item item() const;
 
 private:
+    EvolutionMethod() = default;
+
     EvolutionMethodType _type;
-    uint32_t _level;
+
+    uint32_t _level = 0;
+    Item _item = Item::NONE;
 };
 
 }
