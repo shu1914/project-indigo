@@ -20,47 +20,23 @@ Pokemons::all()
 {
     static const std::vector<Pokemon> pokemons =
     {
-        []()
-        {
-            Pokemon pokemon(
-                1,
-                "Bulbasaur");
+        Pokemon(
+            1,
+            "Bulbasaur",
+            {types::GRASS, types::POISON},
+            {abilities::OVERGROW}),
 
-            pokemon.addType(types::GRASS);
-            pokemon.addType(types::POISON);
+        Pokemon(
+            2,
+            "Ivysaur",
+            {types::GRASS, types::POISON},
+            {abilities::OVERGROW}),
 
-            pokemon.addAbility(abilities::OVERGROW);
-
-            return pokemon;
-        }(),
-
-        []()
-        {
-            Pokemon pokemon(
-                2,
-                "Ivysaur");
-
-            pokemon.addType(types::GRASS);
-            pokemon.addType(types::POISON);
-
-            pokemon.addAbility(abilities::OVERGROW);
-
-            return pokemon;
-        }(),
-
-        []()
-        {
-            Pokemon pokemon(
-                3,
-                "Venusaur");
-
-            pokemon.addType(types::GRASS);
-            pokemon.addType(types::POISON);
-
-            pokemon.addAbility(abilities::OVERGROW);
-
-            return pokemon;
-        }()
+        Pokemon(
+            3,
+            "Venusaur",
+            {types::GRASS, types::POISON},
+            {abilities::OVERGROW})
     };
 
     return pokemons;
