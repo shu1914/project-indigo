@@ -7,6 +7,8 @@
  * @copyright Copyright (c) 2026
  */
 
+#include <stdexcept>
+
 #include "EvolutionMethod.h"
 
 namespace indigo
@@ -26,6 +28,11 @@ EvolutionMethod::level(uint32_t level)
 EvolutionMethod
 EvolutionMethod::item(Item item)
 {
+    if (item == Item::NONE)
+    {
+        throw std::invalid_argument("Item evolution requires a valid item.");
+    }
+
     EvolutionMethod method;
 
     method._type = EvolutionMethodType::ITEM;
