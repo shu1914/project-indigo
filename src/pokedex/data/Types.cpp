@@ -17,67 +17,67 @@ const Type NORMAL(
     "Normal");
 
 const Type FIRE(
-    2,
+    10,
     "Fire");
 
 const Type WATER(
-    3,
+    11,
     "Water");
 
 const Type ELECTRIC(
-    4,
+    13,
     "Electric");
 
 const Type GRASS(
-    5,
+    12,
     "Grass");
 
 const Type ICE(
-    6,
+    15,
     "Ice");
 
 const Type FIGHTING(
-    7,
+    2,
     "Fighting");
 
 const Type POISON(
-    8,
+    4,
     "Poison");
 
 const Type GROUND(
-    9,
+    5,
     "Ground");
 
 const Type FLYING(
-    10,
+    3,
     "Flying");
 
 const Type PSYCHIC(
-    11,
+    14,
     "Psychic");
 
 const Type BUG(
-    12,
+    7,
     "Bug");
 
 const Type ROCK(
-    13,
+    6,
     "Rock");
 
 const Type GHOST(
-    14,
+    8,
     "Ghost");
 
 const Type DRAGON(
-    15,
+    16,
     "Dragon");
 
 const Type DARK(
-    16,
+    17,
     "Dark");
 
 const Type STEEL(
-    17,
+    9,
     "Steel");
 
 const Type FAIRY(
