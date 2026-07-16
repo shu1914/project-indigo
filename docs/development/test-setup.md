@@ -2,6 +2,8 @@
 
 This document defines the conventions used when writing unit tests with Catch2.
 
+---
+
 ## Philosophy
 
 Tests should verify **behavior**, not implementation.
@@ -14,7 +16,7 @@ Avoid testing implementation details such as private members, internal algorithm
 
 ---
 
-# Choosing Between `TEST_CASE` and `SCENARIO`
+## Choosing Between `TEST_CASE` and `SCENARIO`
 
 Catch2 provides multiple ways to structure tests. The two primary styles used in this project are:
 
@@ -25,7 +27,7 @@ Choose the one that best communicates the behavior being tested.
 
 ---
 
-# `TEST_CASE`
+## `TEST_CASE`
 
 Use `TEST_CASE` when verifying a **single piece of behavior** or a **simple contract**.
 
@@ -68,7 +70,7 @@ TEST_CASE("Creating a point initializes its coordinates")
 
 ---
 
-# `SCENARIO`
+## `SCENARIO`
 
 Use `SCENARIO` when testing **behavior described as a workflow**.
 
@@ -125,7 +127,7 @@ SCENARIO("Adding an item to an empty cart")
 
 ---
 
-# When NOT to use `SCENARIO`
+## When NOT to use `SCENARIO`
 
 Do not force BDD syntax when there is no meaningful setup or sequence.
 
@@ -154,7 +156,7 @@ TEST_CASE("Calculator adds two numbers")
 
 ---
 
-# Optional `GIVEN`
+## Optional `GIVEN`
 
 `GIVEN` is optional.
 
@@ -176,7 +178,7 @@ SCENARIO("Looking up an existing record")
 
 ---
 
-# Multiple `WHEN`s
+## Multiple `WHEN`s
 
 A single scenario may contain multiple independent actions.
 
@@ -208,7 +210,7 @@ This avoids duplicating common setup.
 
 ---
 
-# Naming Guidelines
+## Naming Guidelines
 
 Test names should describe observable behavior.
 
@@ -228,7 +230,7 @@ A reader should understand the expected behavior without reading the implementat
 
 ---
 
-# Assertions
+## Assertions
 
 Use the appropriate assertion for the situation.
 
@@ -263,22 +265,42 @@ CHECK(result->name() == "Example");
 
 ---
 
-# One Behavior Per Test
+## One Behavior Per Test
 
-Each test should verify one behavior.
+Each test should verify a single behavior.
 
-Avoid combining unrelated concerns.
+Avoid combining unrelated concerns into one test. Separate success and failure paths into different test cases.
 
 Prefer:
 
 - one test for successful lookup
 - one test for failed lookup
 
-instead of one large test covering every possible case.
+instead of a single test that covers both scenarios.
+
+```cpp
+TEST_CASE("find() returns the Pokémon when it exists")
+{
+    // Arrange
+
+    // Act
+
+    // Assert
+}
+
+TEST_CASE("find() returns std::nullopt when the Pokémon does not exist")
+{
+    // Arrange
+
+    // Act
+
+    // Assert
+}
+```
 
 ---
 
-# Keep Tests Independent
+## Keep Tests Independent
 
 Tests must not depend on execution order.
 
@@ -292,7 +314,7 @@ Avoid:
 
 ---
 
-# Test the Public API
+## Test the Public API
 
 Tests should interact only with the public interface.
 
@@ -306,7 +328,7 @@ Instead, verify the observable behavior exposed by the public API.
 
 ---
 
-# Prefer Readability Over Cleverness
+## Prefer Readability Over Cleverness
 
 Tests serve as executable documentation.
 
