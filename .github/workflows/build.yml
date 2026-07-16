@@ -6,6 +6,7 @@ concurrency:
 
 permissions:
   contents: read
+  checks: write
 
 on:
   push:
@@ -53,4 +54,12 @@ jobs:
         run: |
           ctest \
             --test-dir build \
-            --output-on-failure
+            --output-on-failure \
+            --output-junit test-results.xml
+
+      - name: Publish test report
+        if: always()
+        uses: mikepenz/action-junit-report@v5
+        with:
+          report_paths: build/test-results.xml
+          check_name: "Unit Tests (${{ matrix.build_type }})"
