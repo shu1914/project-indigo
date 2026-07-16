@@ -260,7 +260,7 @@ Release Version 1.0.
 
 - [x] 🌱 Pallet Town
 - [x] 🪨 Pewter City
-- [ ] 💧 Cerulean City
+- [x] 💧 Cerulean City
 - [ ] ⚡ Vermilion City
 - [ ] 🌈 Celadon City
 - [ ] ☠️ Fuchsia City
