@@ -50,9 +50,7 @@ jobs:
           cmake --build build --parallel
 
       - name: Run tests
-        if: matrix.build_type == 'Debug'
         run: |
           ctest \
             --test-dir build \
-            --output-on-failure \
-            --verbose
+            --output-on-failure
