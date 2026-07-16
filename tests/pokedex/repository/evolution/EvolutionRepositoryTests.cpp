@@ -12,7 +12,7 @@ TEST_CASE("EvolutionRepository returns a level evolution")
     // Bulbasaur evolution should only return 1 evolution
     auto result = repository.get(1);
 
-    CHECK(result.size() == 1);
+    REQUIRE(result.size() == 1);
 
     const auto& evolution = result.front();
     const auto method = evolution.method();
@@ -29,7 +29,7 @@ TEST_CASE("EvolutionRepository returns an item evolution")
     // Pikachu evolution should only return 1 evolution
     auto result = repository.get(25);
 
-    CHECK(result.size() == 1);
+    REQUIRE(result.size() == 1);
 
     const auto& evolution = result.front();
     const auto method = evolution.method();
@@ -46,7 +46,7 @@ TEST_CASE("EvolutionRepository returns no evolutions for a Pokemon without evolu
     // Venusaur evolution should return 0 evolutions
     auto result = repository.get(3);
 
-    CHECK(result.size() == 0);
+    CHECK(result.empty());
 }
 
 }
