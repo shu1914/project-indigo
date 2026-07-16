@@ -269,7 +269,7 @@ CHECK(result->name() == "Example");
 
 Each test should verify a single behavior.
 
-Avoid combining unrelated concerns into one test. Separate success and failure paths into different test cases.
+Avoid combining unrelated concerns into one test. Separate success and failure paths unless a `SCENARIO` intentionally shares meaningful setup across independent `WHEN` branches.
 
 Prefer:
 
