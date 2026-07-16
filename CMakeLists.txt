@@ -17,3 +17,11 @@ file(COPY
 
 # Project Libraries
 add_subdirectory(src)
+
+# Tests
+option(BUILD_TESTING "Build unit tests" ON)
+
+if(BUILD_TESTING)
+    enable_testing()
+    add_subdirectory(tests)
+endif()
