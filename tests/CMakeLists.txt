@@ -1,5 +1,9 @@
 find_package(Catch2 3 REQUIRED)
 
+include(CTest)
+include(Catch)
+
+
 file(GLOB_RECURSE TEST_SOURCES
     CONFIGURE_DEPENDS
     *.cpp
@@ -16,7 +20,5 @@ target_link_libraries(project_indigo_tests PRIVATE
     logger
     config
 )
-
-include(Catch)
 
 catch_discover_tests(project_indigo_tests)
