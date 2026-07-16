@@ -90,7 +90,7 @@ Build the Pokémon domain.
 #### Sample Data
 - [x] Load sample Pokémon
 - [x] Verify data access
-- [ ] Unit test repository
+- [x] Unit test repository
 
 ---
 
