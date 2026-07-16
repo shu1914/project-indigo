@@ -1,11 +1,12 @@
 find_package(Catch2 3 REQUIRED)
 
-add_executable(project_indigo_tests
-    repository/PokemonRepositoryTests.cpp
+file(GLOB_RECURSE TEST_SOURCES
+    CONFIGURE_DEPENDS
+    *.cpp
 )
 
-target_include_directories(project_indigo_tests PRIVATE
-    ${CMAKE_SOURCE_DIR}/src
+add_executable(project_indigo_tests
+    ${TEST_SOURCES}
 )
 
 target_link_libraries(project_indigo_tests PRIVATE
