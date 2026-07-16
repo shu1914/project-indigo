@@ -28,7 +28,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
 
       - name: Install dependencies
         run: |
@@ -59,7 +59,8 @@ jobs:
 
       - name: Publish test report
         if: always()
-        uses: mikepenz/action-junit-report@v5
+        uses: mikepenz/action-junit-report@3585e9575db828022551b4231f165eb59a0e74e3
         with:
           report_paths: build/test-results.xml
-          check_name: "Unit Tests (${{ matrix.build_type }})"
+          check_name: Unit Tests (${{ matrix.build_type }})
+          annotate_only: ${{ github.event.pull_request.head.repo.fork }}
