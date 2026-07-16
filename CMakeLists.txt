@@ -14,6 +14,12 @@ file(COPY
 )
 
 # Third-party libraries
+set(LV_BUILD_CONF_PATH
+    ${CMAKE_SOURCE_DIR}/config/lv_conf.h
+    CACHE STRING "Path to lv_conf.h"
+)
+
+add_subdirectory(external/lvgl)
 
 # Project Libraries
 add_subdirectory(src)
