@@ -6,6 +6,7 @@ concurrency:
 
 permissions:
   contents: read
+  checks: write
 
 on:
   push:
@@ -27,14 +28,16 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
 
       - name: Install dependencies
         run: |
           sudo apt update
           sudo apt install -y \
+            ninja-build \
             libfmt-dev \
-            nlohmann-json3-dev
+            nlohmann-json3-dev \
+            catch2
 
       - name: Configure
         run: |
@@ -46,3 +49,18 @@ jobs:
       - name: Build
         run: |
           cmake --build build --parallel
+
+      - name: Run tests
+        run: |
+          ctest \
+            --test-dir build \
+            --output-on-failure \
+            --output-junit test-results.xml
+
+      - name: Publish test report
+        if: always()
+        uses: mikepenz/action-junit-report@3585e9575db828022551b4231f165eb59a0e74e3
+        with:
+          report_paths: build/test-results.xml
+          check_name: Unit Tests (${{ matrix.build_type }})
+          annotate_only: ${{ github.event.pull_request.head.repo.fork }}
