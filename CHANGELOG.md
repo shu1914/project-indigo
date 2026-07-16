@@ -5,6 +5,27 @@
 >
 > This changelog follows the principles of [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and [Semantic Versioning](https://semver.org/).
 
+## [0.3.0] 2026-07-17
+
+### Added
+- Added domain models
+  - `Pokemon`
+  - `Type`
+  - `Ability`
+  - `Evolution`
+  - `PokemonDetails`
+- Added repositories
+  - `PokemonRepository`
+  - `EvolutionRepository`
+- Added sample data to the domain models added.
+- Added unit tests
+
+### Changed
+- Modified `Pokedex` to be injected with the repositories added
+
+### Fixed
+- N/A
+
 ## [0.2.0] 2026-07-13
 
 ### Added
