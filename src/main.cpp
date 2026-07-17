@@ -48,11 +48,5 @@ main(
         platform,
         ui);
 
-    app.initialize();
-
-    app.run();
-
-    app.shutdown();
-
-    return 0;
+    return app.run();
 }

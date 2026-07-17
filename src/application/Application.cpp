@@ -46,10 +46,18 @@ Application::initialize()
 int
 Application::run()
 {
+    if(!initialize())
+    {
+        ERROR("Failed platform initialize.");
+        return -1;
+    }
+
     DEBUG("Hello Project Indigo.");
 
     TRACE("Starting thread");
     _platform.run();
+
+    shutdown();
 
     return 0;
 }
