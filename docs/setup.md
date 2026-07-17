@@ -27,4 +27,4 @@ SDL is usually used for simulating LVGL in your development setup. This requires
 ### Wayland
 
 _Under construction_
-Wayland not yet supported. Will add in later.
+Wayland is not yet supported and will be added later.
