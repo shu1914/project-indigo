@@ -11,11 +11,10 @@
  * 
  * @copyright Copyright (c) 2026
  */
-
-#include "common/error/Result.h"
-
 #ifndef I_PLATFORM_H
 #define I_PLATFORM_H
+
+#include "common/error/Result.h"
 
 namespace indigo
 {
