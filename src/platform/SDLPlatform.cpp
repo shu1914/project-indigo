@@ -26,7 +26,7 @@ void
 onCloseRequsted(
     lv_event_t* e)
 {
-    SDLPlatform* self = (SDLPlatform*)lv_event_get_user_data(e);
+    SDLPlatform* self = static_cast<SDLPlatform*>(lv_event_get_user_data(e));
     self->stop();
 }
 
