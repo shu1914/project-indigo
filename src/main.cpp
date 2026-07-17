@@ -24,7 +24,6 @@ main(
 {
 
     indigo::Configuration config("config/config.json");
-    config.load();
 
     indigo::ConsoleLogger console;
 
