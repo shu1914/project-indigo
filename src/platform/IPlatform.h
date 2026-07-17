@@ -12,6 +12,8 @@
  * @copyright Copyright (c) 2026
  */
 
+#include "common/error/Result.h"
+
 #ifndef I_PLATFORM_H
 #define I_PLATFORM_H
 
@@ -25,7 +27,7 @@ public:
 
     virtual ~IPlatform() {}
 
-    virtual bool initialize() = 0;
+    virtual Result initialize() = 0;
 
     virtual void shutdown() = 0;
 

@@ -13,12 +13,12 @@
 namespace indigo
 {
 
-bool
+Result
 Platform::initialize()
 {
     TRACE("Initializing `Platform` module.");
 
-    return true;
+    return Result::ok();
 }
 
 void

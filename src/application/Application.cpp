@@ -34,7 +34,13 @@ Application::initialize()
         return result;
     }
 
-    _platform.initialize();
+    result = _platform.initialize();
+
+    if (!result.success())
+    {
+        return result;
+    }
+
     _ui.initialize();
 
     TRACE("Application initialized.");
