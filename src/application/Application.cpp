@@ -60,7 +60,7 @@ Application::run()
 
     DEBUG("Hello Project Indigo.");
 
-    TRACE("Starting thread");
+    TRACE("Starting platform event loop");
     _platform.run();
 
     shutdown();
