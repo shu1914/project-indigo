@@ -28,7 +28,7 @@ Platform::shutdown()
 }
 
 void
-Platform::start()
+Platform::run()
 {
     TRACE("Starting `Platform`.");
 }

@@ -28,7 +28,7 @@ public:
 
     void shutdown() override;
 
-    void start() override;
+    void run() override;
 
 }; // end class Platform
 

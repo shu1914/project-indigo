@@ -49,7 +49,7 @@ Application::run()
     DEBUG("Hello Project Indigo.");
 
     TRACE("Starting thread");
-    _platform.start();
+    _platform.run();
 
     return 0;
 }

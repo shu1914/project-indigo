@@ -29,7 +29,7 @@ public:
 
     virtual void shutdown() = 0;
 
-    virtual void start() = 0;
+    virtual void run() = 0;
 
 }; // end class IPlatform
 
