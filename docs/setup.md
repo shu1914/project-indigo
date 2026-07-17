@@ -18,7 +18,7 @@ If your distribution packages Catch2 v3, you can install it with your package ma
 
 ## LVGL Backends
 
-This project requires specific packages for the LVGL backend to work. It can be enabled/disabled via the project's `lv_conf.h` configuration file.
+This project currently requires SDL2 to build. LVGL backend features are configured via the project's `lv_conf.h` file, but disabling the SDL backend there does not remove the SDL2 build dependency.
 
 ### SDL2
 
