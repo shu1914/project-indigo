@@ -102,7 +102,7 @@ Integrate LVGL.
 ### Checklist
 
 #### LVGL
-- [ ] Build LVGL
+- [x] Build LVGL
 - [ ] Integrate LVGL XML
 - [ ] Create UI module
 - [ ] Initialize display
