@@ -35,7 +35,7 @@ private:
     bool _isRunning;
     bool _initialized;
 
-}; // end class Platform
+}; // end class SDLPlatform
 
 } // end namespace indigo
 
