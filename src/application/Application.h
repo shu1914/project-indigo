@@ -30,7 +30,6 @@ public:
         IPlatform& platform,
         IUserInterface& ui);
 
-    Result initialize();
 
     /**
      * @brief Runs the application lifecycle.
@@ -39,13 +38,21 @@ public:
      */
     int run();
 
+
+private:
+
+    /**
+     * @brief Initializes all modules. Must be called within run()
+     * 
+     * @return Result 
+     */
+    Result initialize();
+
     /**
      * @brief Exits the application
      * 
      */
     void shutdown();
-
-private:
 
     IConfiguration& _config;
     IPlatform& _platform;
