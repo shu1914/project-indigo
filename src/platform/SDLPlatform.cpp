@@ -99,7 +99,7 @@ SDLPlatform::run()
 
         if (delay == LV_NO_TIMER_READY)
         {
-            delay = 1;
+            delay = LV_DEF_REFR_PERIOD;
         }
         SDL_Delay(delay);
     }
