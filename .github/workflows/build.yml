@@ -29,6 +29,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+        with:
+          submodules: recursive
 
       - name: Install dependencies
         run: |
@@ -37,7 +39,8 @@ jobs:
             ninja-build \
             libfmt-dev \
             nlohmann-json3-dev \
-            catch2
+            catch2 \
+            libsdl2-dev
 
       - name: Configure
         run: |

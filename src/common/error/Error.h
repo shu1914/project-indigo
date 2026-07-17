@@ -21,6 +21,12 @@ enum class Error
     ConfigFileNotFound,
     ConfigParseFailed,
 
+    // LVGL
+    LvglDisplayInitFailed,
+
+    // LVGL Backend
+    LvglBackendNotEnabled,
+
     Unknown,
 };
 

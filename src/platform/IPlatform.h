@@ -11,9 +11,10 @@
  * 
  * @copyright Copyright (c) 2026
  */
-
 #ifndef I_PLATFORM_H
 #define I_PLATFORM_H
+
+#include "common/error/Result.h"
 
 namespace indigo
 {
@@ -25,9 +26,11 @@ public:
 
     virtual ~IPlatform() {}
 
-    virtual bool initialize() = 0;
+    virtual Result initialize() = 0;
 
     virtual void shutdown() = 0;
+
+    virtual void run() = 0;
 
 }; // end class IPlatform
 

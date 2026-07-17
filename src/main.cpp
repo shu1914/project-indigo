@@ -10,7 +10,7 @@
 #include "common/config/Configuration.h"
 #include "common/logger/ConsoleLogger.h"
 #include "common/logger/Log.h"
-#include "platform/Platform.h"
+#include "platform/SDLPlatform.h"
 #include "ui/UserInterface.h"
 #include "pokedex/Pokedex.h"
 #include "application/Application.h"
@@ -24,13 +24,12 @@ main(
 {
 
     indigo::Configuration config("config/config.json");
-    config.load();
 
     indigo::ConsoleLogger console;
 
     indigo::Log::initialize(console);
 
-    indigo::Platform platform;
+    indigo::SDLPlatform platform;
 
     indigo::PokemonRepository pokemonRepository;
 
@@ -48,9 +47,5 @@ main(
         platform,
         ui);
 
-    app.run();
-
-    app.shutdown();
-
-    return 0;
+    return app.run();
 }

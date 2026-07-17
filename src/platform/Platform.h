@@ -24,9 +24,11 @@ class Platform : public IPlatform
 
 public:
 
-    bool initialize() override;
+    Result initialize() override;
 
     void shutdown() override;
+
+    void run() override;
 
 }; // end class Platform
 

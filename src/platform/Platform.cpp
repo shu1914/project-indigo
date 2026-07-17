@@ -13,18 +13,24 @@
 namespace indigo
 {
 
-bool
+Result
 Platform::initialize()
 {
     TRACE("Initializing `Platform` module.");
 
-    return true;
+    return Result::ok();
 }
 
 void
 Platform::shutdown()
 {
     TRACE("Shutting `Platform` module down.");
+}
+
+void
+Platform::run()
+{
+    TRACE("Starting `Platform`.");
 }
 
 } // end namespace indigo

@@ -24,23 +24,46 @@ Application::Application(
 {
 }
 
-int
-Application::run()
+Result
+Application::initialize()
 {
-    DEBUG("Hello Project Indigo.");
-
     Result result = _config.load();
 
     if (!result.success())
     {
-        ERROR(result.message);
-        return static_cast<int>(result.error);
+        return result;
     }
 
-    _platform.initialize();
+    result = _platform.initialize();
+
+    if (!result.success())
+    {
+        return result;
+    }
+
     _ui.initialize();
 
     TRACE("Application initialized.");
+
+    return Result::ok();
+}
+
+int
+Application::run()
+{
+    Result result = initialize();
+    if(!result.success())
+    {
+        ERROR(result.message);
+        return static_cast<int>(result.error);;
+    }
+
+    DEBUG("Hello Project Indigo.");
+
+    TRACE("Starting platform event loop");
+    _platform.run();
+
+    shutdown();
 
     return 0;
 }
