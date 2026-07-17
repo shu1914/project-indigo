@@ -23,7 +23,7 @@ namespace indigo
 {
 
 void
-onCloseRequsted(
+onCloseRequested(
     lv_event_t* e)
 {
     SDLPlatform* self = static_cast<SDLPlatform*>(lv_event_get_user_data(e));
@@ -56,7 +56,7 @@ SDLPlatform::initialize()
 
     lv_display_add_event_cb(
         disp,
-        onCloseRequsted,
+        onCloseRequested,
         LV_EVENT_DELETE,
         this);
 
