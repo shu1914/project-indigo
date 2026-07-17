@@ -19,7 +19,7 @@ set(LV_BUILD_CONF_PATH
     CACHE STRING "Path to lv_conf.h"
 )
 
-add_subdirectory(external/lvgl)
+add_subdirectory(external)
 
 # Project Libraries
 add_subdirectory(src)
