@@ -51,10 +51,11 @@ Application::initialize()
 int
 Application::run()
 {
-    if(!initialize().success())
+    Result result = initialize();
+    if(!result.success())
     {
-        ERROR("Failed platform initialize.");
-        return -1;
+        ERROR(result.message);
+        return static_cast<int>(result.error);;
     }
 
     DEBUG("Hello Project Indigo.");
