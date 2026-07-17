@@ -30,7 +30,7 @@ public:
         IPlatform& platform,
         IUserInterface& ui);
 
-    bool initialize();
+    Result initialize();
 
     /**
      * @brief Runs the application lifecycle.

@@ -24,15 +24,14 @@ Application::Application(
 {
 }
 
-bool
+Result
 Application::initialize()
 {
     Result result = _config.load();
 
     if (!result.success())
     {
-        ERROR(result.message);
-        return false;
+        return result;
     }
 
     _platform.initialize();
@@ -40,13 +39,13 @@ Application::initialize()
 
     TRACE("Application initialized.");
 
-    return true;
+    return Result::ok();
 }
 
 int
 Application::run()
 {
-    if(!initialize())
+    if(!initialize().success())
     {
         ERROR("Failed platform initialize.");
         return -1;
