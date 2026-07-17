@@ -28,6 +28,8 @@ public:
 
     void run() override;
 
+    void stop() { _isRunning = false; }
+
 private:
     
     bool _isRunning;

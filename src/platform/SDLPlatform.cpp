@@ -22,6 +22,14 @@
 namespace indigo
 {
 
+void
+onCloseRequsted(
+    lv_event_t* e)
+{
+    SDLPlatform* self = (SDLPlatform*)lv_event_get_user_data(e);
+    self->stop();
+}
+
 SDLPlatform::SDLPlatform()
     : _isRunning(false)
 {
@@ -43,6 +51,12 @@ SDLPlatform::initialize()
             "Display initialize failed.");
     }
 
+    lv_display_add_event_cb(
+        disp,
+        onCloseRequsted,
+        LV_EVENT_DELETE,
+        this);
+
 #else
     return Result::fail(
         Error::LvglBackendNotEnabled,
@@ -58,26 +72,26 @@ void
 SDLPlatform::shutdown()
 {
     TRACE("Shutting SDL platform module down.");
+    stop();
 }
 
 void
 SDLPlatform::run()
 {
 #if LV_USE_SDL
-    while(_isRunning)
+    while (_isRunning)
     {
-        uint32_t time_till_next = lv_timer_handler();
-        SDL_Delay(time_till_next);
-
-        SDL_Event event;
-        while (SDL_PollEvent(&event))
-        {    
-            if (event.type == SDL_QUIT)
-            {
-                _isRunning = false;
-                break;
-            }
+        uint32_t delay = lv_timer_handler();
+        if (!_isRunning)
+        {
+            break;
         }
+
+        if (delay == LV_NO_TIMER_READY)
+        {
+            delay = 1;
+        }
+        SDL_Delay(delay);
     }
 #endif
 }
