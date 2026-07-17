@@ -27,4 +27,10 @@ Platform::shutdown()
     TRACE("Shutting `Platform` module down.");
 }
 
+void
+Platform::start()
+{
+    TRACE("Starting `Platform`.");
+}
+
 } // end namespace indigo

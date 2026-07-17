@@ -29,6 +29,8 @@ public:
 
     virtual void shutdown() = 0;
 
+    virtual void start() = 0;
+
 }; // end class IPlatform
 
 } // end namespace indigo

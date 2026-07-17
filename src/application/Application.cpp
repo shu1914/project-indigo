@@ -42,6 +42,9 @@ Application::run()
 
     TRACE("Application initialized.");
 
+    TRACE("Starting thread");
+    _platform.start();
+
     return 0;
 }
 

@@ -28,6 +28,8 @@ public:
 
     void shutdown() override;
 
+    void start() override;
+
 }; // end class Platform
 
 } // end namespace indigo
