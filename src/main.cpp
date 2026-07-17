@@ -48,6 +48,8 @@ main(
         platform,
         ui);
 
+    app.initialize();
+
     app.run();
 
     app.shutdown();

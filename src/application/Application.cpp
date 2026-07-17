@@ -24,23 +24,29 @@ Application::Application(
 {
 }
 
-int
-Application::run()
+bool
+Application::initialize()
 {
-    DEBUG("Hello Project Indigo.");
-
     Result result = _config.load();
 
     if (!result.success())
     {
         ERROR(result.message);
-        return static_cast<int>(result.error);
+        return false;
     }
 
     _platform.initialize();
     _ui.initialize();
 
     TRACE("Application initialized.");
+
+    return true;
+}
+
+int
+Application::run()
+{
+    DEBUG("Hello Project Indigo.");
 
     TRACE("Starting thread");
     _platform.start();
