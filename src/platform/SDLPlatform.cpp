@@ -32,6 +32,7 @@ onCloseRequsted(
 
 SDLPlatform::SDLPlatform()
     : _isRunning(false)
+    , _initialized(false)
 {
 }
 
@@ -39,6 +40,7 @@ Result
 SDLPlatform::initialize()
 {
     lv_init();
+    _initialized = true;
 #if LV_USE_SDL
     lv_display_t* disp = lv_sdl_window_create(
         SCREEN_WIDTH,
@@ -46,6 +48,7 @@ SDLPlatform::initialize()
 
     if(!disp)
     {
+        lv_deinit();
         return Result::fail(
             Error::LvglDisplayInitFailed,
             "Display initialize failed.");
@@ -58,6 +61,7 @@ SDLPlatform::initialize()
         this);
 
 #else
+    lv_deinit();
     return Result::fail(
         Error::LvglBackendNotEnabled,
         "SDL not enabled in lv_conf.h. Please enable and rebuild");
@@ -73,6 +77,12 @@ SDLPlatform::shutdown()
 {
     TRACE("Shutting SDL platform module down.");
     stop();
+
+    if (_initialized)
+    {
+        lv_deinit();
+        _initialized = false;
+    }
 }
 
 void

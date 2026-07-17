@@ -33,6 +33,7 @@ public:
 private:
     
     bool _isRunning;
+    bool _initialized;
 
 }; // end class Platform
 
