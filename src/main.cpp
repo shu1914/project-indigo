@@ -10,7 +10,7 @@
 #include "common/config/Configuration.h"
 #include "common/logger/ConsoleLogger.h"
 #include "common/logger/Log.h"
-#include "platform/Platform.h"
+#include "platform/SDLPlatform.h"
 #include "ui/UserInterface.h"
 #include "pokedex/Pokedex.h"
 #include "application/Application.h"
@@ -30,7 +30,7 @@ main(
 
     indigo::Log::initialize(console);
 
-    indigo::Platform platform;
+    indigo::SDLPlatform platform;
 
     indigo::PokemonRepository pokemonRepository;
 
