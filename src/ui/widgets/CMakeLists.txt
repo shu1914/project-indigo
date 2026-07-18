@@ -7,6 +7,7 @@ target_include_directories(widget PUBLIC
 )
 
 target_link_libraries(widget
-    PRIVATE
+    PUBLIC
         lvgl
+        fmt::fmt
 )
