@@ -47,7 +47,7 @@ UserInterface::initialize()
 
             // TODO: Remove this along with other debug logs. This is just for verification.
             builder.label(lv_scr_act())
-                    .pos(0,0)
+                    .pos(0, 0)
                     .align(LV_ALIGN_CENTER)
                     .text("Pokemon #1 is {} with a typing of {}.",
                         pokemon.name(),

@@ -7,12 +7,9 @@
  * @copyright Copyright (c) 2026
  */
 
-#ifndef I_WIDGET_H
-#define I_WIDGET_H
+#ifndef WIDGET_H
+#define WIDGET_H
 
-#include <lvgl.h>
-#include <functional>
-#include <string>
 #include <vector>
 
 namespace indigo
@@ -119,4 +116,4 @@ Widget<Derived>::applyCommonProps(lv_obj_t* obj)
 
 }
 
-#endif // I_WIDGET_H 
+#endif // WIDGET_H 
