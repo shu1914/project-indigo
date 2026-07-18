@@ -7,8 +7,12 @@
  * @copyright Copyright (c) 2026
  */
 
+#include <lvgl.h>
+
 #include "UserInterface.h"
 #include "common/logger/LogMacro.h"
+
+#include "widgets/WidgetBuilder.h"
 
 namespace indigo
 {
@@ -24,6 +28,8 @@ UserInterface::initialize()
 {
     TRACE("Initializing `UserInterface` module." );
 
+    WidgetBuilder builder;
+
     _pokedex.initialize();
 
     // TODO: Data testing. Move this later to unit tests
@@ -38,6 +44,15 @@ UserInterface::initialize()
             DEBUG("Pokemon #1 is {} with a typing of {}.",
                 pokemon.name(),
                 pokemon.types().front().name());
+
+            // TODO: Remove this along with other debug logs. This is just for verification.
+            builder.label(lv_scr_act())
+                    .pos(0,0)
+                    .align(LV_ALIGN_CENTER)
+                    .text("Pokemon #1 is {} with a typing of {}.",
+                        pokemon.name(),
+                        pokemon.types().front().name())
+                    .build();
         }
         else
         {
