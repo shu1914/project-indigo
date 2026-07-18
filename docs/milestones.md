@@ -103,7 +103,8 @@ Integrate LVGL.
 
 #### LVGL
 - [x] Build LVGL
-- [ ] Integrate LVGL XML
+- [x] ~~Integrate LVGL XML~~
+  (Decided not to adopt for Project Indigo. XML generation does not align with the project's component-oriented C++ architecture. UI will be implemented in C++ while following LVGL best practices. LVGL Pro will be explored separately in a dedicated project.)
 - [ ] Create UI module
 - [ ] Initialize display
 - [ ] Initialize input
