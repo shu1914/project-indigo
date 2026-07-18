@@ -116,4 +116,4 @@ Widget<Derived>::applyCommonProps(lv_obj_t* obj)
 
 }
 
-#endif // WIDGET_H 
+#endif // WIDGET_H
