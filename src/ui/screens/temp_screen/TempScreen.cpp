@@ -20,15 +20,6 @@ TempScreen::TempScreen(
 {
 }
 
-TempScreen::~TempScreen()
-{
-    if (_screenObj != nullptr)
-    {
-        lv_obj_del(_screenObj);
-        _screenObj = nullptr;
-    }
-}
-
 void
 TempScreen::onCreate()
 {
@@ -126,8 +117,6 @@ TempScreen::onCreate()
     {
         DEBUG("Pokemon #1 not found.");
     }
-
-    lv_screen_load(_screenObj);
 }
 
 }

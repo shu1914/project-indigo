@@ -48,15 +48,15 @@ template<typename T, typename... Args>
 void ScreenManager::show(Args&&... args)
 {
     auto newScreen = std::make_unique<T>(std::forward<Args>(args)...);
+    newScreen->onCreate();
 
     if (_current)
     {
         _current->onHide();
     }
 
+    lv_screen_load(newScreen->root());
     _current = std::move(newScreen);
-
-    _current->onCreate();
     _current->onShow();
 }
 

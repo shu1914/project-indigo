@@ -16,11 +16,26 @@ namespace indigo
 class IScreen
 {
 public:
-    virtual ~IScreen() = default;
+    virtual ~IScreen()
+    {
+        if (_screenObj)
+        {
+            lv_obj_del(_screenObj);
+        }
+    }
 
     virtual void onCreate() = 0;
     virtual void onShow() {}
     virtual void onHide() {}
+
+    lv_obj_t* root() const
+    {
+        return _screenObj;
+    }
+
+protected:
+    lv_obj_t* _screenObj = nullptr;
+
 };
 
 }

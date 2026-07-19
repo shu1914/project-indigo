@@ -26,8 +26,6 @@ public:
     explicit TempScreen(
         IPokedex& pokedex);
 
-    ~TempScreen() override;
-
     TempScreen(const TempScreen&) = delete;
 
     TempScreen& operator=(const TempScreen&) = delete;
@@ -35,7 +33,6 @@ public:
     void onCreate() override;
 
 private:
-    lv_obj_t* _screenObj = nullptr;
     IPokedex& _pokedex;
 
     // TODO: To be removed for actual implementation

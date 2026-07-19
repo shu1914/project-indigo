@@ -22,17 +22,12 @@ class HomeScreen : public IScreen
 public:
     HomeScreen() = default;
     
-    ~HomeScreen() override;
-
     HomeScreen(const HomeScreen&) = delete;
 
     HomeScreen& operator=(const HomeScreen&) = delete;
 
     void onCreate() override;
     void onHide() override;
-
-private:
-    lv_obj_t* _screenObj = nullptr;
 };
 
 }
