@@ -23,7 +23,7 @@ class Widget
 public:
     struct StyleEntry
     {
-        const WidgetStyle* widgetStyle;
+        const WidgetStyle* styleRef;
         lv_style_selector_t selector;
     };
 
@@ -62,6 +62,17 @@ public:
     Derived& nonClickable()
     { _isClickable = false; return static_cast<Derived&>(*this); }
 
+    /**
+     * @brief Applies a style to this widget.
+     *
+     * The Widget does not take ownership of @p widgetStyle.
+     *
+     * @param widgetStyle Style to apply.
+     * @param selector LVGL style selector.
+     *
+     * @pre widgetStyle must remain valid for as long as the
+     *      built LVGL object uses the style.
+     */
     Derived& style(
         const WidgetStyle& widgetStyle,
         lv_style_selector_t selector = LV_PART_MAIN | LV_STATE_DEFAULT)
@@ -114,7 +125,7 @@ Widget<Derived>::applyCommonProps(lv_obj_t* obj)
     {
         lv_obj_add_style(
             obj, 
-            s.widgetStyle->native(),
+            s.styleRef->native(),
             s.selector);
     }
 }
