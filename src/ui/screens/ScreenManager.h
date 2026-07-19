@@ -31,7 +31,13 @@ public:
         if (_current)
         {
             _current->onHide();
+
+            lv_obj_t* tempScreen = lv_obj_create(nullptr);
+            lv_screen_load(tempScreen);
+
             _current.reset();
+
+            lv_obj_delete(tempScreen);
         }
     }
 
