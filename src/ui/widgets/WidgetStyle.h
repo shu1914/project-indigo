@@ -27,7 +27,11 @@ public:
 
     ~WidgetStyle()
     {
-        reset();
+        if(_styleInitialized)
+        {
+            lv_style_reset(&_style);
+            _styleInitialized = false;
+        }
     }
 
     void reset()
@@ -35,7 +39,7 @@ public:
         if(_styleInitialized)
         {
             lv_style_reset(&_style);
-            _styleInitialized = false;
+            lv_style_init(&_style);
         }
     }
 
