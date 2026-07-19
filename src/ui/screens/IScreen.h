@@ -17,7 +17,12 @@ class IScreen
 {
 public:
     IScreen() = default;
-    virtual ~IScreen() = default;
+
+    virtual ~IScreen() {
+        if (_screenObj) {
+            lv_obj_delete(_screenObj);  // LVGL v9
+        }
+    }
 
     IScreen(const IScreen&) = delete;
     IScreen& operator=(const IScreen&) = delete;
