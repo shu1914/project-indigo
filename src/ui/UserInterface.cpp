@@ -12,7 +12,8 @@
 #include "UserInterface.h"
 #include "common/logger/LogMacro.h"
 
-#include "widgets/WidgetBuilder.h"
+#include "screens/home_screen/HomeScreen.h"
+#include "screens/temp_screen/TempScreen.h"
 
 namespace indigo
 {
@@ -27,96 +28,9 @@ bool
 UserInterface::initialize()
 {
     TRACE("Initializing `UserInterface` module." );
-
-    WidgetBuilder builder;
-
-    // Screen or dialog owns WidgetStyle so its their responsibility
-    // to cleanup WidgetStyle. For now, this is just for verification. 
-    _textStyle.textColor(lv_color_hex(0xFF00FF));
-
     _pokedex.initialize();
 
-    // TODO: Data testing. Move this later to unit tests
-    std::optional<PokemonDetails> details = _pokedex.getPokemonDetails(1);
-
-    if (details.has_value())
-    {
-        const auto& pokemon = details.value().pokemon();
-
-        if (!pokemon.types().empty())
-        {
-            DEBUG("Pokemon #1 is {} with a typing of {}.",
-                pokemon.name(),
-                pokemon.types().front().name());
-
-            // TODO: Remove this along with other debug logs. This is just for verification.
-            builder.label(lv_scr_act())
-                    .pos(0, 0)
-                    .align(LV_ALIGN_CENTER)
-                    .text("Pokemon #1 is {} with a typing of {}.",
-                        pokemon.name(),
-                        pokemon.types().front().name())
-                    .style(_textStyle)
-                    .build();
-        }
-        else
-        {
-            DEBUG("Pokemon #1 is {} with no typing.",
-                pokemon.name());
-        }
-
-        if (!details.value().evolutions().empty())
-        {
-            const auto& evolution = details.value().evolutions().front();
-            const auto method = evolution.method();
-
-            // TODO: For now, print the pokemon ID value rather than name. Refactor later
-            switch (method.type())
-            {
-                case EvolutionMethodType::LEVEL:
-                {
-                    DEBUG("It will evolve to {} at level {}.",
-                        evolution.to(),
-                        evolution.method().level());
-                }
-                break;
-                case EvolutionMethodType::ITEM:
-                {
-                    DEBUG("It will evolve to {} with {}.",
-                        evolution.to(),
-                        // TODO: Print the actual item name later. For now, just print the num value.
-                        static_cast<uint32_t>(evolution.method().item()));
-                }
-                break;
-                case EvolutionMethodType::TRADE:
-                {
-                    DEBUG("It will evolve to {} with trade.",
-                        evolution.to());
-                }
-                break;
-                case EvolutionMethodType::FRIENDSHIP:
-                {
-                    DEBUG("It will evolve to {} through friendship.",
-                        evolution.to());
-                }
-                break;
-                default:
-                {
-                    DEBUG("It will evolve to {} with unknown method.",
-                        evolution.to());
-                }
-                break;
-            }
-        }
-        else
-        {
-            DEBUG("It has no evolutions.");
-        }
-    }
-    else
-    {
-        DEBUG("Pokemon #1 not found.");
-    }
+    _screenMgr.show<TempScreen>(_pokedex);
 
     return true;
 }
@@ -125,7 +39,7 @@ void
 UserInterface::shutdown()
 {
     TRACE("Shutting `UserInterface` module down.");
-    _textStyle.reset();
+    _screenMgr.clear();
 }
 
 } // end namespace indigo

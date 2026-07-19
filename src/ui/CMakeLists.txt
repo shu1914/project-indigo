@@ -1,4 +1,5 @@
 add_subdirectory(widgets)
+add_subdirectory(screens)
 
 add_library(ui
     UserInterface.cpp
@@ -13,4 +14,5 @@ target_link_libraries(ui
         lvgl
     PUBLIC
         widget
+        screen
 )
