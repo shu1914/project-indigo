@@ -13,6 +13,7 @@
 #define USER_INTERFACE_H
 
 #include "IUserInterface.h"
+#include "widgets/WidgetStyle.h"
 
 namespace indigo
 {
@@ -30,6 +31,11 @@ public:
     void shutdown() override;
 
     IPokedex& _pokedex;
+
+private:
+
+    // TODO: To be removed for actual implementation
+    WidgetStyle _textStyle;
 
 }; // end class UserInterface
 

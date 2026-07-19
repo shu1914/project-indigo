@@ -12,6 +12,8 @@
 
 #include <vector>
 
+#include "WidgetStyle.h"
+
 namespace indigo
 {
 
@@ -21,7 +23,7 @@ class Widget
 public:
     struct StyleEntry
     {
-        const lv_style_t* style;
+        const WidgetStyle* styleRef;
         lv_style_selector_t selector;
     };
 
@@ -60,11 +62,22 @@ public:
     Derived& nonClickable()
     { _isClickable = false; return static_cast<Derived&>(*this); }
 
+    /**
+     * @brief Applies a style to this widget.
+     *
+     * The Widget does not take ownership of @p widgetStyle.
+     *
+     * @param widgetStyle Style to apply.
+     * @param selector LVGL style selector.
+     *
+     * @pre widgetStyle must remain valid for as long as the
+     *      built LVGL object uses the style.
+     */
     Derived& style(
-        const lv_style_t* style,
+        const WidgetStyle& widgetStyle,
         lv_style_selector_t selector = LV_PART_MAIN | LV_STATE_DEFAULT)
     {
-        _styles.push_back({style, selector});
+        _widgetStyles.push_back({&widgetStyle, selector});
         return static_cast<Derived&>(*this);
     }
 
@@ -94,7 +107,7 @@ private:
     bool _isDisabled = false;
     bool _isClickable = false;
 
-    std::vector<StyleEntry> _styles;
+    std::vector<StyleEntry> _widgetStyles;
 };
 
 template<typename Derived> void
@@ -108,9 +121,12 @@ Widget<Derived>::applyCommonProps(lv_obj_t* obj)
     lv_obj_set_flag(obj, LV_OBJ_FLAG_HIDDEN, _isHidden);
     lv_obj_set_flag(obj, LV_OBJ_FLAG_CLICKABLE, _isClickable);
 
-    for (const auto& s : _styles)
+    for(const auto& s : _widgetStyles)
     {
-        lv_obj_add_style(obj, s.style, s.selector);
+        lv_obj_add_style(
+            obj, 
+            s.styleRef->native(),
+            s.selector);
     }
 }
 

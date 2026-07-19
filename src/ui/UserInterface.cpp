@@ -30,6 +30,10 @@ UserInterface::initialize()
 
     WidgetBuilder builder;
 
+    // Screen or dialog owns WidgetStyle so its their responsibility
+    // to cleanup WidgetStyle. For now, this is just for verification. 
+    _textStyle.textColor(lv_color_hex(0xFF00FF));
+
     _pokedex.initialize();
 
     // TODO: Data testing. Move this later to unit tests
@@ -52,6 +56,7 @@ UserInterface::initialize()
                     .text("Pokemon #1 is {} with a typing of {}.",
                         pokemon.name(),
                         pokemon.types().front().name())
+                    .style(_textStyle)
                     .build();
         }
         else
@@ -120,6 +125,7 @@ void
 UserInterface::shutdown()
 {
     TRACE("Shutting `UserInterface` module down.");
+    _textStyle.reset();
 }
 
 } // end namespace indigo
