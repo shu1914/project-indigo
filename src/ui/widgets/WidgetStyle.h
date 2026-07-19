@@ -37,10 +37,10 @@ public:
         return *this;
     }
 
-    WidgetStyle& bg_opa(
+    WidgetStyle& bgOpa(
         lv_opa_t opa)
     {
-        lv_style_set_opa(&_style, opa);
+        lv_style_set_bg_opa(&_style, opa);
         return *this;
     }
 
