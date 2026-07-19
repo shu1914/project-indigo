@@ -11,7 +11,6 @@
 #define WIDGET_STYLE_H
 
 #include <lvgl.h>
-#include <optional>
 
 namespace indigo
 {
