@@ -11,5 +11,6 @@ target_include_directories(ui PUBLIC
 target_link_libraries(ui
     PRIVATE
         lvgl
+    PUBLIC
         widget
 )
