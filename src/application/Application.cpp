@@ -73,8 +73,8 @@ Application::shutdown()
 {
     DEBUG("Goodbye Project Indigo.");
 
-    _platform.shutdown();
     _ui.shutdown();
+    _platform.shutdown();
 
     TRACE("Application shutdown");
 }
