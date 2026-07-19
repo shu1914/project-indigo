@@ -22,25 +22,19 @@ public:
     WidgetStyle()
     {
         lv_style_init(&_style);
-        _styleInitialized = true;
     }
 
     ~WidgetStyle()
     {
-        if(_styleInitialized)
-        {
-            lv_style_reset(&_style);
-            _styleInitialized = false;
-        }
+        // _style was initialized in the constructor and always remains
+        // valid; no move/ copy allowed; so reset is safe.
+        lv_style_reset(&_style);
     }
 
     void reset()
     {
-        if(_styleInitialized)
-        {
-            lv_style_reset(&_style);
-            lv_style_init(&_style);
-        }
+        lv_style_reset(&_style);
+        lv_style_init(&_style);
     }
 
     WidgetStyle(const WidgetStyle&) = delete;
@@ -79,7 +73,6 @@ public:
 
 private:
     lv_style_t _style;
-    bool _styleInitialized = false;
 };
 
 }
