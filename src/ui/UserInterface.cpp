@@ -125,6 +125,7 @@ void
 UserInterface::shutdown()
 {
     TRACE("Shutting `UserInterface` module down.");
+    textStyle.reset();
 }
 
 } // end namespace indigo

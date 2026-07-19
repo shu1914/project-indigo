@@ -22,11 +22,21 @@ public:
     WidgetStyle()
     {
         lv_style_init(&_style);
+        _styleInitialized = true;
     }
 
     ~WidgetStyle()
     {
-        lv_style_reset(&_style);
+        reset();
+    }
+
+    void reset()
+    {
+        if(_styleInitialized)
+        {
+            lv_style_reset(&_style);
+            _styleInitialized = false;
+        }
     }
 
     WidgetStyle(const WidgetStyle&) = delete;
@@ -65,6 +75,7 @@ public:
 
 private:
     lv_style_t _style;
+    bool _styleInitialized = false;
 };
 
 }
