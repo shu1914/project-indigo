@@ -13,6 +13,7 @@
 #include "common/logger/LogMacro.h"
 
 #include "widgets/WidgetBuilder.h"
+#include "widgets/WidgetStyle.h"
 
 namespace indigo
 {
@@ -29,6 +30,11 @@ UserInterface::initialize()
     TRACE("Initializing `UserInterface` module." );
 
     WidgetBuilder builder;
+    // Screen or dialog owns WidgetStyle so its their responsibility
+    // to cleanup WidgetStyle or leave it static. For now, this is
+    // just for verification 
+    static WidgetStyle style;
+    style.textColor(lv_color_hex(0xFF00FF));
 
     _pokedex.initialize();
 
@@ -52,6 +58,7 @@ UserInterface::initialize()
                     .text("Pokemon #1 is {} with a typing of {}.",
                         pokemon.name(),
                         pokemon.types().front().name())
+                    .style(style)
                     .build();
         }
         else
