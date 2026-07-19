@@ -39,6 +39,8 @@ void
 UserInterface::shutdown()
 {
     TRACE("Shutting `UserInterface` module down.");
+    // load a temporary screen
+    lv_screen_load(lv_obj_create(nullptr));
     _screenMgr.clear();
 }
 
