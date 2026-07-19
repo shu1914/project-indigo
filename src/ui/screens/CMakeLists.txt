@@ -11,4 +11,6 @@ target_link_libraries(screen
     PUBLIC
         lvgl
         widget
+        logger
+        pokedex
 )

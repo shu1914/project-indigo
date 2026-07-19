@@ -12,6 +12,15 @@
 namespace indigo
 {
 
+HomeScreen::~HomeScreen()
+{
+    if (_screenObj != nullptr)
+    {
+        lv_obj_del(_screenObj);
+        _screenObj = nullptr;
+    }
+}
+
 void
 HomeScreen::onCreate()
 {
@@ -20,6 +29,11 @@ HomeScreen::onCreate()
     lv_obj_set_style_bg_color(_screenObj, lv_color_hex(0x8888FF), 0);
 
     lv_screen_load(_screenObj);
+}
+
+void
+HomeScreen::onHide()
+{
 }
 
 }

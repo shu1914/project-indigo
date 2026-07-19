@@ -39,6 +39,7 @@ void
 UserInterface::shutdown()
 {
     TRACE("Shutting `UserInterface` module down.");
+    _screenMgr.clear();
 }
 
 } // end namespace indigo

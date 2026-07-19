@@ -1,9 +1,9 @@
 /**
- * @file HomeScreen.cpp
- * @brief Home screen class implementation
+ * @file TempScreen.cpp
+ * @brief Temp screen class implementation
  * @author As-Harrie Dianalan (asharrie.dianalan@gmail.com)
  * @date 2026-07-19
- * 
+ *
  * @copyright Copyright (c) 2026
  */
 
@@ -22,7 +22,11 @@ TempScreen::TempScreen(
 
 TempScreen::~TempScreen()
 {
-    _textStyle.reset();
+    if (_screenObj != nullptr)
+    {
+        lv_obj_del(_screenObj);
+        _screenObj = nullptr;
+    }
 }
 
 void
@@ -50,8 +54,8 @@ TempScreen::onCreate()
     {
         const auto& pokemon = details.value().pokemon();
 
-        std::string pokemonStr = fmt::format(("Pokemon #1 is {} with no typing.",
-            pokemon.name()));
+        std::string pokemonStr = fmt::format("Pokemon #1 is {} with no typing.",
+            pokemon.name());
         if (!pokemon.types().empty())
         {
             pokemonStr = fmt::format("Pokemon #1 is {} with a typing of {}.",

@@ -13,7 +13,6 @@
 #include <lvgl.h>
 
 #include "../IScreen.h"
-#include "../../widgets/label/Label.h"
 
 namespace indigo
 {
@@ -21,7 +20,10 @@ namespace indigo
 class HomeScreen : public IScreen
 {
 public:
+    ~HomeScreen() override;
+
     void onCreate() override;
+    void onHide() override;
 
 private:
     lv_obj_t* _screenObj = nullptr;

@@ -26,6 +26,15 @@ public:
     template<typename T, typename... Args>
     void show(Args&&... args);
 
+    void clear()
+    {
+        if (_current)
+        {
+            _current->onHide();
+            _current.reset();
+        }
+    }
+
     IScreen* current() const
     {
         return _current.get();
@@ -38,14 +47,14 @@ private:
 template<typename T, typename... Args>
 void ScreenManager::show(Args&&... args)
 {
+    auto newScreen = std::make_unique<T>(std::forward<Args>(args)...);
+
     if (_current)
     {
         _current->onHide();
     }
 
-    _current.reset();
-
-    _current = std::make_unique<T>(std::forward<Args>(args)...);
+    _current = std::move(newScreen);
 
     _current->onCreate();
     _current->onShow();
