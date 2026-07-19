@@ -1,9 +1,9 @@
 /**
- * @file TempScreen.h
- * @brief Temp screen class
+ * @file HomeScreen.h
+ * @brief Home screen class
  * @author As-Harrie Dianalan (asharrie.dianalan@gmail.com)
  * @date 2026-07-19
- *
+ * 
  * @copyright Copyright (c) 2026
  */
 
@@ -13,7 +13,7 @@
 #include <lvgl.h>
 
 #include "../IScreen.h"
-#include "../../widgets/WidgetStyle.h"
+#include "../../widgets/label/Label.h"
 
 #include "pokedex/IPokedex.h"
 
@@ -27,6 +27,10 @@ public:
         IPokedex& pokedex);
 
     ~TempScreen() override;
+
+    TempScreen(const TempScreen&) = delete;
+
+    TempScreen& operator=(const TempScreen&) = delete;
 
     void onCreate() override;
 
