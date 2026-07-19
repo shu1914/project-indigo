@@ -29,6 +29,12 @@ public:
         lv_style_reset(&_style);
     }
 
+    WidgetStyle(const WidgetStyle&) = delete;
+    WidgetStyle& operator=(const WidgetStyle&) = delete;
+
+    WidgetStyle(WidgetStyle&&) = delete;
+    WidgetStyle& operator=(WidgetStyle&&) = delete;
+
     WidgetStyle& bgColor(
         lv_color_t color)
     {
