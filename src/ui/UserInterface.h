@@ -35,7 +35,7 @@ public:
 private:
 
     // TODO: To be removed for actual implementation
-    WidgetStyle textStyle;
+    WidgetStyle _textStyle;
 
 }; // end class UserInterface
 
