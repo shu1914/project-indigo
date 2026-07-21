@@ -106,6 +106,20 @@ public:
         return *this;
     }
 
+    WidgetStyle& transformWidth(
+        int32_t width)
+    {
+        lv_style_set_transform_width(&_style, width);
+        return *this;
+    }
+
+    WidgetStyle& transformHeight(
+        int32_t height)
+    {
+        lv_style_set_transform_height(&_style, height);
+        return *this;
+    }
+
     WidgetStyle& selector(
         lv_style_selector_t selector)
     {
