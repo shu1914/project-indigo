@@ -64,6 +64,56 @@ public:
         return *this;
     }
 
+    WidgetStyle& radius(
+        int32_t radius)
+    {
+        lv_style_set_radius(&_style, radius);
+        return *this;
+    }
+
+    WidgetStyle& lineWidth(
+        int32_t lineWidth)
+    {
+        lv_style_set_line_width(&_style, lineWidth);
+        return *this;
+    }
+
+    WidgetStyle& lineColor(
+        lv_color_t lineColor)
+    {
+        lv_style_set_line_color(&_style, lineColor);
+        return *this;
+    }
+
+    WidgetStyle& borderWidth(
+        int32_t borderWidth)
+    {
+        lv_style_set_border_width(&_style, borderWidth);
+        return *this;
+    }
+
+    WidgetStyle& borderColor(
+        lv_color_t borderColor)
+    {
+        lv_style_set_border_color(&_style, borderColor);
+        return *this;
+    }
+
+    WidgetStyle& borderOpa(
+        lv_opa_t opa)
+    {
+        lv_style_set_border_opa(&_style, opa);
+        return *this;
+    }
+
+    WidgetStyle& selector(
+        lv_style_selector_t selector)
+    {
+        _selector = selector;
+        return *this;
+    }
+
+
     // TODO: Add more styles function here based on what is required
 
     const lv_style_t* native() const
@@ -71,8 +121,14 @@ public:
         return &_style;
     }
 
+    const lv_style_selector_t getSelector() const
+    {
+        return _selector;
+    }
+
 private:
     lv_style_t _style;
+    lv_style_selector_t _selector = LV_STATE_DEFAULT | LV_PART_MAIN;
 };
 
 }
