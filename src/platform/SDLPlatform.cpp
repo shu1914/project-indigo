@@ -60,6 +60,8 @@ SDLPlatform::initialize()
         LV_EVENT_DELETE,
         this);
 
+    lv_sdl_mouse_create();
+
 #else
     lv_deinit();
     return Result::fail(
