@@ -1,4 +1,6 @@
 add_library(widget
+    WidgetBehavior.cpp
+
     label/Label.cpp
 )
 
