@@ -35,6 +35,7 @@ public:
     {
         lv_style_reset(&_style);
         lv_style_init(&_style);
+        _selector = LV_STATE_DEFAULT | LV_PART_MAIN;
     }
 
     WidgetStyle(const WidgetStyle&) = delete;
