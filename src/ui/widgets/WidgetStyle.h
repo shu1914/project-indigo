@@ -35,6 +35,7 @@ public:
     {
         lv_style_reset(&_style);
         lv_style_init(&_style);
+        _selector = LV_STATE_DEFAULT | LV_PART_MAIN;
     }
 
     WidgetStyle(const WidgetStyle&) = delete;
@@ -64,6 +65,70 @@ public:
         return *this;
     }
 
+    WidgetStyle& radius(
+        int32_t radius)
+    {
+        lv_style_set_radius(&_style, radius);
+        return *this;
+    }
+
+    WidgetStyle& lineWidth(
+        int32_t lineWidth)
+    {
+        lv_style_set_line_width(&_style, lineWidth);
+        return *this;
+    }
+
+    WidgetStyle& lineColor(
+        lv_color_t lineColor)
+    {
+        lv_style_set_line_color(&_style, lineColor);
+        return *this;
+    }
+
+    WidgetStyle& borderWidth(
+        int32_t borderWidth)
+    {
+        lv_style_set_border_width(&_style, borderWidth);
+        return *this;
+    }
+
+    WidgetStyle& borderColor(
+        lv_color_t borderColor)
+    {
+        lv_style_set_border_color(&_style, borderColor);
+        return *this;
+    }
+
+    WidgetStyle& borderOpa(
+        lv_opa_t opa)
+    {
+        lv_style_set_border_opa(&_style, opa);
+        return *this;
+    }
+
+    WidgetStyle& transformWidth(
+        int32_t width)
+    {
+        lv_style_set_transform_width(&_style, width);
+        return *this;
+    }
+
+    WidgetStyle& transformHeight(
+        int32_t height)
+    {
+        lv_style_set_transform_height(&_style, height);
+        return *this;
+    }
+
+    WidgetStyle& selector(
+        lv_style_selector_t selector)
+    {
+        _selector = selector;
+        return *this;
+    }
+
+
     // TODO: Add more styles function here based on what is required
 
     const lv_style_t* native() const
@@ -71,8 +136,14 @@ public:
         return &_style;
     }
 
+    const lv_style_selector_t getSelector() const
+    {
+        return _selector;
+    }
+
 private:
     lv_style_t _style;
+    lv_style_selector_t _selector = LV_STATE_DEFAULT | LV_PART_MAIN;
 };
 
 }
