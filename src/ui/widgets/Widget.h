@@ -11,8 +11,10 @@
 #define WIDGET_H
 
 #include <vector>
+#include <optional>
 
 #include "WidgetStyle.h"
+#include "WidgetBehavior.h"
 
 namespace indigo
 {
@@ -21,12 +23,6 @@ template<typename Derived>
 class Widget
 {
 public:
-    struct StyleEntry
-    {
-        const WidgetStyle* styleRef;
-        lv_style_selector_t selector;
-    };
-
     explicit Widget(
         lv_obj_t* parent)
         : _parent(parent)
@@ -68,17 +64,25 @@ public:
      * The Widget does not take ownership of @p widgetStyle.
      *
      * @param widgetStyle Style to apply.
-     * @param selector LVGL style selector.
      *
      * @pre widgetStyle must remain valid for as long as the
      *      built LVGL object uses the style.
      */
     Derived& style(
-        const WidgetStyle& widgetStyle,
-        lv_style_selector_t selector = LV_PART_MAIN | LV_STATE_DEFAULT)
+        const WidgetStyle& widgetStyle)
     {
-        _widgetStyles.push_back({&widgetStyle, selector});
+        _widgetStyles.push_back(&widgetStyle);
         return static_cast<Derived&>(*this);
+    }
+
+    virtual const WidgetStyle* defaultStyle() const
+    {
+        return nullptr;
+    }
+
+    virtual const WidgetBehavior* defaultBehavior() const
+    {
+        return nullptr;
     }
 
     virtual lv_obj_t* build() = 0;
@@ -87,6 +91,21 @@ protected:
 
     void applyCommonProps(
         lv_obj_t* obj);
+
+    template<typename InitFn>
+    static const WidgetStyle* makeDefaultStyle(
+        InitFn&& init)
+    {
+        static WidgetStyle style;
+
+        static const bool initialized = [&] {
+            init(style);
+            return true;
+        }();
+
+        (void)initialized;
+        return &style;
+    }
 
     lv_obj_t* _parent;
 
@@ -103,11 +122,30 @@ private:
     int32_t _height = 0;
     bool _hasSize = false;
 
-    bool _isHidden = false;
-    bool _isDisabled = false;
-    bool _isClickable = false;
+    std::optional<bool> _isHidden;
+    std::optional<bool> _isDisabled;
+    std::optional<bool> _isClickable;
 
-    std::vector<StyleEntry> _widgetStyles;
+    std::vector<const WidgetStyle*> _widgetStyles;
+
+    WidgetBehavior behavior() const
+    {
+        WidgetBehavior result;
+
+        if (auto* defaults = defaultBehavior())
+            result = *defaults;
+
+        if (_isHidden)
+            result.flags.hidden = _isHidden;
+
+        if (_isClickable)
+            result.flags.clickable = _isClickable;
+
+        if (_isDisabled)
+            result.states.disabled = _isDisabled;
+
+        return result;
+    }
 };
 
 template<typename Derived> void
@@ -117,16 +155,24 @@ Widget<Derived>::applyCommonProps(lv_obj_t* obj)
     if (_hasAlign) lv_obj_set_align(obj, _align);
     if (_hasSize) lv_obj_set_size(obj, _width, _height);
 
-    lv_obj_set_state(obj, LV_STATE_DISABLED, _isDisabled);
-    lv_obj_set_flag(obj, LV_OBJ_FLAG_HIDDEN, _isHidden);
-    lv_obj_set_flag(obj, LV_OBJ_FLAG_CLICKABLE, _isClickable);
+    behavior().apply(obj);
 
-    for(const auto& s : _widgetStyles)
+    // Apply widget-level default styles
+    if (const auto* style = defaultStyle())
     {
         lv_obj_add_style(
-            obj, 
-            s.styleRef->native(),
-            s.selector);
+            obj,
+            style->native(),
+            style->getSelector());
+    }
+
+    // Apply overrided styles
+    for(const auto* style : _widgetStyles)
+    {
+        lv_obj_add_style(
+            obj,
+            style->native(),
+            style->getSelector());
     }
 }
 
