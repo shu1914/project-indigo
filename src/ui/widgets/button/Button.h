@@ -26,9 +26,6 @@ public:
     lv_obj_t* build() override;
 
     const std::vector<const WidgetStyle*>& defaultStyles() const override;
-
-    // const WidgetBehavior* defaultBehavior() const override;
-
 };
 
 }
