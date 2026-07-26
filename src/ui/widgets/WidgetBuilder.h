@@ -13,6 +13,9 @@
 #include <lvgl.h>
 
 #include "label/Label.h"
+#include "container/Container.h"
+#include "line/Line.h"
+#include "button/Button.h"
 
 namespace indigo
 {
@@ -29,6 +32,25 @@ public:
         return Label(
             parent);
     }
+
+    inline Container container(lv_obj_t* parent)
+    {
+        return Container(
+            parent);
+    }
+
+    inline Line line(lv_obj_t* parent)
+    {
+        return Line(
+            parent);
+    }
+
+    inline Button button(lv_obj_t* parent)
+    {
+        return Button(
+            parent);
+    }
+    
 
     // TODO: Add more widgets here
 

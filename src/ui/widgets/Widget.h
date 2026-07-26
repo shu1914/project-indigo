@@ -75,9 +75,11 @@ public:
         return static_cast<Derived&>(*this);
     }
 
-    virtual const WidgetStyle* defaultStyle() const
+    virtual const std::vector<const WidgetStyle*>& defaultStyles() const
     {
-        return nullptr;
+        // return an empty vector
+        static const std::vector<const WidgetStyle*> styles;
+        return styles;
     }
 
     virtual const WidgetBehavior* defaultBehavior() const
@@ -93,8 +95,7 @@ protected:
         lv_obj_t* obj);
 
     template<typename InitFn>
-    static const WidgetStyle* makeDefaultStyle(
-        InitFn&& init)
+    static const WidgetStyle* makeStaticStyle(InitFn&& init)
     {
         static WidgetStyle style;
 
@@ -158,7 +159,7 @@ Widget<Derived>::applyCommonProps(lv_obj_t* obj)
     behavior().apply(obj);
 
     // Apply widget-level default styles
-    if (const auto* style = defaultStyle())
+    for (const auto* style : defaultStyles())
     {
         lv_obj_add_style(
             obj,
