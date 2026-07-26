@@ -25,6 +25,16 @@ public:
 
     lv_obj_t* build() override;
 
+    /**
+     * @brief Sets the line points.
+     *
+     * @param points Pointer to the point array.
+     * @param count Number of points.
+     *
+     * @note Neither Line nor LVGL takes ownership of the point array.
+     * The caller must ensure the array remains valid until the line
+     * object is deleted or another point array is assigned.
+     */
     Line& points(
         const lv_point_precise_t* points,
         uint32_t count)
