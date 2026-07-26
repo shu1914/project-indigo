@@ -19,7 +19,7 @@ Line::build()
 
     applyCommonProps(object);
 
-    if(_count > 0)
+    if(_count > 0 && _points != nullptr)
     {
         lv_line_set_points(object, _points, _count);
     }
