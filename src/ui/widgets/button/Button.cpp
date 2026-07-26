@@ -12,15 +12,19 @@
 namespace indigo
 {
 
-const WidgetStyle*
-Button::defaultStyle() const
+const std::vector<const WidgetStyle*>&
+Button::defaultStyles() const
 {
-    return makeDefaultStyle([](WidgetStyle& s) {
-        s.bgColor(lv_color_hex(0xFF0000))
-         .transformWidth(0)
-         .transformHeight(0)
-         .selector(LV_STATE_PRESSED);
-    });
+    static const std::vector<const WidgetStyle*> styles = {
+        makeStaticStyle([](WidgetStyle& s) {
+            s.bgColor(lv_color_hex(0xFF0000))
+             .transformWidth(0)
+             .transformHeight(0)
+             .selector(LV_STATE_PRESSED);
+        })
+    };
+
+    return styles;
 }
 
 

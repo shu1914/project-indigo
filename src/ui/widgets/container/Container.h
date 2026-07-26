@@ -34,7 +34,7 @@ public:
         return *this;
     }
 
-    const WidgetStyle* defaultStyle() const override;
+    const std::vector<const WidgetStyle*>& defaultStyles() const override;
 
 private:
     lv_layout_t _layout = LV_LAYOUT_NONE;

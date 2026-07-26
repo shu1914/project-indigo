@@ -12,13 +12,17 @@
 namespace indigo
 {
 
-const WidgetStyle*
-Container::defaultStyle() const
+const std::vector<const WidgetStyle*>&
+Container::defaultStyles() const
 {
-    return makeDefaultStyle([](WidgetStyle& s) {
-        s.radius(0)
-         .borderWidth(0);
-    });
+    static const std::vector<const WidgetStyle*> styles = {
+        makeStaticStyle([](WidgetStyle& s) {
+            s.radius(0)
+            .borderWidth(0);
+        })
+    };
+
+    return styles;
 }
 
 lv_obj_t*
