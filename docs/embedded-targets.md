@@ -44,6 +44,30 @@ LVGL 9.5 (`external/lvgl/src/drivers/`) includes `drm`, `fb`, `evdev` and `wayla
 
 My suggested first target is the **Raspberry Pi Zero 2 W** with a small HDMI display. It has the lowest porting risk, and the code stays portable to the others. I can't pick a final board without your screen size and budget (OQ-5).
 
+## Display connection on the Raspberry Pi Zero 2 W
+
+> Port details are from general knowledge and the mini-HDMI port was confirmed by the project owner. Check the vendor page before buying.
+
+The board has no screen, so a separate display is needed. It has **no MIPI DSI display connector**. Its CSI connector is for cameras only.
+
+| Port | Use |
+|------|-----|
+| Mini-HDMI | Video output. Needs a mini-HDMI to HDMI cable or adapter. |
+| 40-pin GPIO header (may be unpopulated) | SPI or parallel DPI displays. |
+| Two micro-USB ports (power, and data/OTG) | The data port is the only one for peripherals, so a micro-USB OTG adapter or a small hub is needed for USB touch. |
+
+| Option | Fit | Notes |
+|--------|-----|-------|
+| HDMI display, 5 to 7 inch, 800×480 | **Recommended first target** | Standard DRM/KMS path (`IND-125`). Matches the primary size (`IND-134`). Touch is usually USB HID, which Linux exposes as evdev. Check that the touch is USB HID and not a vendor protocol. HDMI audio is a free option (`IND-136`). |
+| SPI display, about 3.5 inch, 480×320 | Not for a first target | Slow for LVGL; the 30 FPS goal (`IND-122`) is at risk; Yocto driver support varies. |
+| DPI (parallel RGB on GPIO) | Advanced | Fast, but uses most pins and needs a device-tree overlay. |
+
+## Boards ruled out
+
+| Board | Reason |
+|-------|--------|
+| ESP32-S3 boards (e.g. the JC4827W543 module) | A microcontroller with no MMU. Mainline Linux and Yocto do not support it, so it is the bare-metal case that this project does not plan for. The app needs the C++ standard library, SQLite and a 64 MB budget (`IND-122`); the ESP32-S3 has about 512 KB internal RAM plus optional PSRAM. The module's 4.3 inch panel is, from memory, 480×272, which is outside the supported sizes. Treat it as a separate project. |
+
 ## Audio (optional)
 
 Audio is nice to have (`IND-078`, `IND-136`). The app must run silently on a device with no audio output.

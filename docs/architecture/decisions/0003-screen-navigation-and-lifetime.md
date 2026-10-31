@@ -2,7 +2,7 @@
 
 - Status: Proposed
 - Date: 2026-10-31
-- Related requirements: IND-044, IND-061, IND-114, IND-062
+- Related requirements: IND-044, IND-061, IND-114
 
 ## Context
 `ScreenManager::show<T>` keeps a single `unique_ptr<IScreen>` and replaces it (`src/ui/screens/ScreenManager.h`). Two needs are unmet and one hazard exists:
@@ -18,6 +18,8 @@
 5. Teardown happens while LVGL is initialized. `pop()`, `replace()`, `clear()` and `ScreenManager`'s destructor each call `destroy()` on every screen they remove, then release the objects, in top-to-bottom order. `UserInterface::shutdown()` calls `clear()`, which `Application` runs before `IPlatform::shutdown()` (`lv_deinit`). The default destruction of the stack container must therefore never be the first thing to delete an LVGL tree.
 6. Lifecycle callbacks on every transition (`onHide()` and `onShow()` exist today in `IScreen`): `push<T>` calls `onHide()` on the outgoing top screen, then `onCreate()`, load and `onShow()` on the new one. `pop()` calls `onHide()` on the popped screen, loads the screen beneath, calls its `onShow()`, then destroys the popped screen. `replace<T>` calls `onHide()` on the outgoing screen, then `onCreate()`, load and `onShow()` on the new one, then destroys the outgoing screen. `clear()` calls `onHide()` on each screen top to bottom, then tears them down. A retained screen therefore always gets `onHide()` when covered and `onShow()` when revealed.
 7. Screens below the top of the stack stay alive (state kept), decided by the project owner. Revisit if memory budgets (IND-122) are at risk.
+
+Screen transition animations (IND-062) are out of scope: they remain deferred under OQ-7 and need their own decision with a named duration constant.
 
 ## Alternatives considered
 - Use LVGL's own screen loading and `lv_screen_load_anim` only — no ownership of C++ screen objects and no history; does not solve teardown order.

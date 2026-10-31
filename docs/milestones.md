@@ -397,7 +397,7 @@ Release Version 1.0. *Release: v1.0.0.*
 | OQ-12 | Coverage is set by risk: at least 80% line coverage on non-UI code (`common`, `pokedex`, `application`), measured in CI. UI code is covered by screen and navigation tests, with no percentage target. | Delegated | IND-085 |
 | OQ-13 | QA comes first. A test plan is written and run (IND-130), then every bug found is either fixed or explicitly deferred with a reason. There is no severity cut-off. | You | IND-091, IND-094, IND-130 |
 | OQ-4 | User data (favourites, settings) is stored in a separate small file whose path comes from configuration, so it works on a device with or without Linux. | You | IND-115, IND-135 |
-| OQ-5 (part) | Desktop for now, designed stand-alone. Audio is optional. The device has a touch screen and a power button only. Layout is landscape, 800×480 primary and 480×320 as the small size. The embedded OS image will use Yocto, set up once a device exists. The code stays backend-agnostic, so adding a device means a new backend and configuration only. Candidate boards are in `docs/embedded-targets.md`. | You (landscape and sizes: delegated) | IND-133 to IND-137, IND-140, IND-141 |
+| OQ-5 (part) | Desktop for now, designed stand-alone. Audio is optional. The device has a touch screen and a power button only. Layout is landscape, 800×480 primary and 480×320 as the small size. The embedded OS image will use Yocto, set up once a device exists. The code stays backend-agnostic, so adding a device means a new backend and configuration only. Candidate boards, the Raspberry Pi Zero 2 W display options (mini-HDMI, no DSI) and ruled-out boards (ESP32-S3) are in `docs/embedded-targets.md`. | You (landscape and sizes: delegated) | IND-133 to IND-137, IND-140, IND-141 |
 | OQ-14 | The repository is public because the Cubic AI reviewer needs it, so no Pokémon artwork, audio or databases are committed or released. Milestone 9 releases are source-only, and published screenshots, video and GIFs use placeholder assets. | You (adjustments by me) | IND-095 to IND-097, IND-101, IND-121, IND-138, IND-139 |
 | OQ-15 | A source-only release plus a fan-project disclaimer is acceptable. This is not legal advice. | You | IND-097, IND-121 |
 
@@ -405,7 +405,7 @@ Release Version 1.0. *Release: v1.0.0.*
 
 | # | Question | Affects | Why it matters |
 |---|----------|---------|----------------|
-| OQ-5 | Which board and exact panel (size, resolution, touch controller) will you buy? Decide when you buy; the shortlist is in `docs/embedded-targets.md`. | IND-104, IND-125, IND-131, IND-132 | Fixes the first real backend. |
+| OQ-5 | Which board and exact panel (size, resolution, touch controller) will you buy? Decide when you buy; the shortlist is in `docs/embedded-targets.md`. Leaning towards the Raspberry Pi Zero 2 W with an 800×480 HDMI touch panel (USB touch); ESP32-S3 boards are ruled out because they cannot run Linux or Yocto. | IND-104, IND-125, IND-131, IND-132 | Fixes the first real backend. |
 
 ---
 
@@ -432,3 +432,4 @@ Counts are Completed / applicable requirements (Not Applicable items excluded). 
 | 2026-10-31 | Answered OQ-1 to OQ-13 (see Decisions). Retired IND-046 into IND-079. Refined IND-058, IND-062, IND-068, IND-071, IND-073, IND-085, IND-087, IND-091, IND-094, IND-121, IND-122, IND-125. Added IND-130 to IND-132. Added OQ-14. |
 | 2026-10-31 | Applied answers on OQ-4, OQ-5 (part) and OQ-14. Added IND-133 to IND-139. Raised IND-121 to Should. Narrowed IND-095 to IND-097 and IND-101 for the public repository. Added OQ-15. |
 | 2026-10-31 | Applied answers on OQ-5 (part) and OQ-15. Added IND-140 (touch-only) and IND-141 (on-screen keyboard). Lowered IND-103 to Could. Recorded landscape layout and Yocto preference. |
+| 2026-10-31 | Recorded the ESP32-S3 rejection and the Raspberry Pi Zero 2 W display options (mini-HDMI, no DSI) in OQ-5 and `docs/embedded-targets.md`. No requirement IDs changed. |
