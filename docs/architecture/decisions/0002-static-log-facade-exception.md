@@ -8,7 +8,7 @@
 IND-021 asks to avoid unnecessary global state. Logging is needed in every module, including header-only and static code, and passing an `ILogger&` through every constructor would add noise. OQ-8 in `milestones.md` accepted a static facade as an exception. `Log` holds a static `ILogger*` that `main()` sets once (`src/common/logger/Log.cpp`).
 
 ## Decision
-Keep `indigo::Log` (with the `TRACE/DEBUG/INFO/USER/WARN/ERROR/FATAL` macros) as the only sanctioned global dependency. (Function-local statics such as the data tables, `HomeScreen`'s point array and `Widget::makeStaticStyle` exist separately; the last two are tracked in architecture.md and IND-109.) It is initialized once in `main()`, after `Configuration` and `ConsoleLogger` are constructed and before any logging-dependent module is used. Nothing else may be made global on the same grounds.
+Keep `indigo::Log` (with the `TRACE/DEBUG/INFO/USER/WARN/ERROR/FATAL` macros) as the only sanctioned global dependency. (Function-local statics exist separately: the const data tables, `HomeScreen`'s point array (IND-109) and the default widget styles built by `Widget::makeStaticStyle` for `Button` and `Container` (architecture.md P11, no requirement yet).) It is initialized once in `main()`, after `Configuration` and `ConsoleLogger` are constructed and before any logging-dependent module is used. Nothing else may be made global on the same grounds.
 
 ## Alternatives considered
 - Inject `ILogger&` everywhere — purer, but touches every constructor for a cross-cutting concern.
