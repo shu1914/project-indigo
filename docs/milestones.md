@@ -405,7 +405,7 @@ Release Version 1.0. *Release: v1.0.0.*
 
 | # | Question | Affects | Why it matters |
 |---|----------|---------|----------------|
-| OQ-5 | Which board and exact panel (size, resolution, touch controller) will you buy? Decide when you buy; the shortlist is in `docs/embedded-targets.md`. Leaning towards the Raspberry Pi Zero 2 W with an 800×480 HDMI touch panel (USB touch); ESP32-S3 boards are ruled out because they cannot run Linux or Yocto. | IND-104, IND-125, IND-131, IND-132 | Fixes the first real backend. |
+| OQ-5 | Which board and exact panel (size, resolution, touch controller) will you buy? Decide when you buy; the shortlist is in `docs/embedded-targets.md`. Leaning towards the Raspberry Pi Zero 2 W with an 800×480 HDMI touch panel (USB touch); ESP32-S3 boards are outside the planned mainline Linux/Yocto target; they would need a separate bare-metal or no-MMU port. | IND-104, IND-125, IND-131, IND-132 | Fixes the first real backend. |
 
 ---
 

@@ -66,7 +66,7 @@ The board has no screen, so a separate display is needed. It has **no MIPI DSI d
 
 | Board | Reason |
 |-------|--------|
-| ESP32-S3 boards (e.g. the JC4827W543 module) | A microcontroller with no MMU. Mainline Linux and Yocto do not support it, so it is the bare-metal case that this project does not plan for. The app needs the C++ standard library, SQLite and a 64 MB budget (`IND-122`); the ESP32-S3 has about 512 KB internal RAM plus optional PSRAM. The module's 4.3 inch panel is, from memory, 480×272, which is outside the supported sizes. Treat it as a separate project. |
+| ESP32-S3 boards (e.g. the JC4827W543 module) | A microcontroller with no MMU. Mainline Linux and Yocto do not support it (only an experimental no-MMU port exists), so it is outside the planned Linux/Yocto target and is the bare-metal case that this project does not plan for. The app needs the C++ standard library, SQLite and the proposed, unmeasured 64 MB memory budget (`IND-122`); the ESP32-S3 has about 512 KB internal RAM plus optional PSRAM. The module's 4.3 inch panel is, from memory, 480×272, which is outside the supported sizes. Treat it as a separate project. |
 
 ## Audio (optional)
 
