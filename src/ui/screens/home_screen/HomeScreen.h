@@ -22,7 +22,17 @@ class HomeScreen : public IScreen
 {
 public:
     HomeScreen() = default;
-    
+
+    // Delete the LVGL tree before the style members are destroyed.
+    ~HomeScreen() override
+    {
+        if (_screenObj)
+        {
+            lv_obj_delete(_screenObj);
+            _screenObj = nullptr;
+        }
+    }
+
     HomeScreen(const HomeScreen&) = delete;
 
     HomeScreen& operator=(const HomeScreen&) = delete;
