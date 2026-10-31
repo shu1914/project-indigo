@@ -29,7 +29,7 @@ Decisions are recorded in [architecture/decisions/](architecture/decisions/):
 
 ### 1.2 Components (Verified)
 
-Each box is one CMake library target. Arrows are link or `#include` dependencies seen in the code.
+The diagram mixes CMake targets, classes and conceptual groupings. Arrows show link or `#include` dependencies where applicable.
 
 ```mermaid
 flowchart TB
@@ -124,7 +124,7 @@ sequenceDiagram
 - **Screen lifecycle.** `IScreen { onCreate, onShow, onHide }`; `ScreenManager::show<T>(args...)` constructs a screen, loads it, and destroys the previous one (`ScreenManager.h`). One screen at a time, no stack.
 - **Fluent widget builders.** `WidgetBuilder` returns `Label/Container/Line/Button`, each derived from CRTP `Widget<Derived>` with chainable `pos/align/size/style/...`. `WidgetStyle` wraps `lv_style_t` (non-copyable, non-movable). Styles are applied by pointer, so the screen must own them for as long as the LVGL objects live.
 - **UI/backend separation.** LVGL and SDL are used only in `src/ui/`, `src/platform/` and (by class name only) `main.cpp`; `pokedex` and `common` include neither (search: `grep -rl "lvgl\|SDL" src`). This already satisfies the intent of IND-133 for SDL; DRM/evdev do not exist yet.
-- **Global state.** One: static `Log::_logger` (`Log.cpp`). Accepted in ADR-0002.
+- **Global logging state.** The only application-wide service pointer is static `Log::_logger` (`Log.cpp`), accepted in ADR-0002. Function-local statics also exist: the data tables in `Pokemons.cpp` and `Evolutions.cpp` (const), `HomeScreen::onCreate`'s point array (IND-109) and `Widget::makeStaticStyle` (a mutable static `WidgetStyle`; no caller found in `src/`).
 
 ### 1.5 Dependency direction (Verified)
 
@@ -172,7 +172,7 @@ Not problems (checked): no business logic in `ui` or `platform`; `pokedex` has n
 None of this is a rewrite. Each step is independent, small, and keeps the current layering. Order is by value per effort and by what Milestone 4 needs.
 
 1. **Make `Log` null-safe (P5).** Default `_logger` to a built-in no-op logger so macros are safe before `main()` wires the console logger. Prerequisite for testing `Pokedex`/`Application`. *Why first:* one file, unblocks P8.
-2. **Unify initialization results (P2, P3).** Change `IUserInterface::initialize` and `IPokedex::initialize` to return `Result`. Have `Application::initialize` call `_pokedex`-owner initialization explicitly *or* document that `UserInterface` owns it; prefer making `main()` pass `IPokedex` to `Application` too so all module lifecycles sit in one function. Check each result.
+2. **Unify initialization results (P2, P3).** Change `IUserInterface::initialize` and `IPokedex::initialize` to return `Result`. `Application` owns every module's initialization (Q1): pass `IPokedex` to `Application` from `main()`, call `_pokedex.initialize()` there before `_ui.initialize()`, and remove the call from `UserInterface`. Check each result.
 3. **Add tests on the existing seams (P8).** `Application` with fake `IConfiguration/IPlatform/IUserInterface` (startup order, error exit code, shutdown order); `Configuration` (flatten, missing key); `Pokedex::getPokemonDetails`. Track against IND-085.
 4. **Fix screen teardown once (P1).** Proposed in ADR-0003: `ScreenManager` calls a public non-virtual `IScreen::destroy()` (deletes the LVGL root) *before* releasing the screen object, so derived members can be destroyed afterwards. Remove the per-screen destructor workaround. Do this before the second real screen is written.
 5. **Add navigation (P7).** ADR-0003: replace the single `_current` with a stack in `ScreenManager` (`push<T>()`, `pop()`, `replace<T>()`), and give screens a small `INavigator` reference (constructor-injected via `show/push` arguments) so `HomeScreen` can request the list. This covers IND-044, 061, 114. Keep `show<T>` as an alias of `replace<T>` until callers are migrated.
@@ -185,12 +185,19 @@ Proportionality note: the project is a single-developer app with five modules. N
 
 ---
 
-## 4. Open questions
+## 4. Decisions and open questions
+
+Answered by the project owner on 2026-10-31:
+
+| # | Question | Answer | Effect |
+|---|----------|--------|--------|
+| Q1 | Who owns module initialization? | `Application` | `Application` initializes every module, including `IPokedex`; `UserInterface` stops calling `_pokedex.initialize()` (P3, To-Be 2). |
+| Q3 | Keep screens alive on the stack? | Yes; revisit if the memory budget (IND-122) is at risk | ADR-0003 decision 4 stands. |
+| Q4 | Decide the layout size now? | Yes; the sizes may be refined once a panel is chosen | Layouts target 800×480 (primary) and 480×320 (small), as in IND-134; the DRM/evdev backend is still not designed now. |
+| Q5 | Does the uncommitted `config/lv_conf.h` change matter? | No: test-only, the diff only turns on the system and memory monitors | Committed values relied on: `LV_USE_SDL 1`, `LV_USE_LINUX_DRM 0`, `LV_USE_EVDEV 0`, `LV_USE_SYSMON 0`, `LV_USE_STDLIB_MALLOC LV_STDLIB_BUILTIN`. |
+
+Still open:
 
 | # | Question | Affects |
 |---|----------|---------|
-| Q1 | Should `Application` own the lifecycle of every module (including `IPokedex`), or should `UserInterface` keep initializing the pokedex? Recommendation: `Application`. | P2, P3, To-Be 2 |
-| Q2 | Is `Platform` (the empty class) intended as the future backend selector for IND-125, or can it be deleted? | P9, IND-125 |
-| Q3 | Should screens hold state across `pop()` (kept alive on the stack) or be rebuilt? IND-061 says "state kept"; keeping them alive costs LVGL memory against the 64 MB budget (IND-122). Recommendation: keep alive, revisit if the budget is at risk. | ADR-0003 |
-| Q4 | Which board/panel (OQ-5) — decides whether the DRM/evdev backend and the 480×320 layout need to be designed now. | IND-104, 125, 134 |
-| Q5 | *Not verified:* whether `config/lv_conf.h` (uncommitted change in the working tree at the start of this review) alters any setting this document relies on, such as `LV_USE_SDL`. Only committed code was assessed. | §1.1 |
+| Q2 | Is `Platform` (the empty class) meant to become the backend selector for IND-125, or should it be deleted? The recorded answer was "Yes", which does not pick one of the two. | P9, IND-125 |

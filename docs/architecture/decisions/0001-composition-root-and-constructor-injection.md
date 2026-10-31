@@ -8,7 +8,7 @@
 The project wants testable modules and no hidden coupling. The existing code and `docs/architecture.md` already follow one wiring style; this ADR records it so later changes do not drift. Recorded retrospectively from `src/main.cpp` and the user-confirmed requirements.
 
 ## Decision
-`main()` constructs every module object and passes collaborators by reference, through constructors, as interface types (`IConfiguration`, `IPlatform`, `IUserInterface`, `IPokedex`, repository interfaces). No module constructs another module or looks one up globally. Interfaces are introduced where a module has, or will plausibly have, a second implementation (platform backend, repository storage) or needs a test fake.
+`main()` constructs every module object and passes collaborators by reference, through constructors, as interface types (`IConfiguration`, `IPlatform`, `IUserInterface`, `IPokedex`, repository interfaces). No top-level module constructs another top-level module or resolves injected collaborators globally; the static `Log` facade is the documented exception (ADR-0002). Interfaces are introduced where a module has, or will plausibly have, a second implementation (platform backend, repository storage) or needs a test fake.
 
 ## Alternatives considered
 - Service locator or global registry — hides dependencies and makes tests depend on global setup.
