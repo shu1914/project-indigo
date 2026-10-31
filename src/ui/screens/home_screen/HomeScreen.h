@@ -13,6 +13,7 @@
 #include <lvgl.h>
 
 #include "../IScreen.h"
+#include "../../widgets/WidgetStyle.h"
 
 namespace indigo
 {
@@ -21,13 +22,31 @@ class HomeScreen : public IScreen
 {
 public:
     HomeScreen() = default;
-    
+
+    // Delete the LVGL tree before the style members are destroyed.
+    ~HomeScreen() override
+    {
+        if (_screenObj)
+        {
+            lv_obj_delete(_screenObj);
+            _screenObj = nullptr;
+        }
+    }
+
     HomeScreen(const HomeScreen&) = delete;
 
     HomeScreen& operator=(const HomeScreen&) = delete;
 
     void onCreate() override;
     void onHide() override;
+
+private:
+    WidgetStyle _topContStyle;
+    WidgetStyle _bottomContStyle;
+    WidgetStyle _centerDividerStyle;
+    WidgetStyle _centerContStyle;
+    WidgetStyle _centerButtonStyle;
+
 };
 
 }
