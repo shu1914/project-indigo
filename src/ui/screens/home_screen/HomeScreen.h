@@ -13,6 +13,7 @@
 #include <lvgl.h>
 
 #include "../IScreen.h"
+#include "../../widgets/WidgetStyle.h"
 
 namespace indigo
 {
@@ -28,6 +29,14 @@ public:
 
     void onCreate() override;
     void onHide() override;
+
+private:
+    WidgetStyle _topContStyle;
+    WidgetStyle _bottomContStyle;
+    WidgetStyle _centerDividerStyle;
+    WidgetStyle _centerContStyle;
+    WidgetStyle _centerButtonStyle;
+
 };
 
 }

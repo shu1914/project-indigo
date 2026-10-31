@@ -30,7 +30,7 @@ UserInterface::initialize()
     TRACE("Initializing `UserInterface` module." );
     _pokedex.initialize();
 
-    _screenMgr.show<TempScreen>(_pokedex);
+    _screenMgr.show<HomeScreen>();
 
     return true;
 }
