@@ -192,7 +192,7 @@ Answered by the project owner on 2026-10-31:
 | # | Question | Answer | Effect |
 |---|----------|--------|--------|
 | Q1 | Who owns module initialization? | `Application` | `Application` initializes every module, including `IPokedex`; `UserInterface` stops calling `_pokedex.initialize()` (P3, To-Be 2). |
-| Q3 | Keep screens alive on the stack? | Yes; revisit if the memory budget (IND-122) is at risk | ADR-0003 decision 4 stands. |
+| Q3 | Keep screens alive on the stack? | Yes; revisit if the memory budget (IND-122) is at risk | ADR-0003 decision 6 stands. |
 | Q4 | Decide the layout size now? | Yes; the sizes may be refined once a panel is chosen | Layouts target 800×480 (primary) and 480×320 (small), as in IND-134; the DRM/evdev backend is still not designed now. |
 | Q2 | Is `Platform` the future backend selector? | Yes | Keep `Platform`; do not delete it (P9). Turn it into the selector for IND-125 when a second backend (DRM/evdev) is added. |
 | Q5 | Does the uncommitted `config/lv_conf.h` change matter? | No: test-only, the diff only turns on the system and memory monitors | Committed values relied on: `LV_USE_SDL 1`, `LV_USE_LINUX_DRM 0`, `LV_USE_EVDEV 0`, `LV_USE_SYSMON 0`, `LV_USE_STDLIB_MALLOC LV_STDLIB_BUILTIN`. |
